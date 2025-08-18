@@ -1,4 +1,4 @@
-# Nome do Projeto
+# DesapegueFacil
 ## Descrição
 Aplicativo para [descrever objetivo], focado em [público-alvo].
 ## Tecnologias Utilizadas
