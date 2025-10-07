@@ -1,0 +1,328 @@
+/* =================================== */
+/* 1. Variáveis Globais (Root)
+/* =================================== */
+:root {
+  /* Cores */
+  --color-primary: #3498db;
+  --color-secondary: #2c3e50;
+  --color-text-primary: #333;
+  --color-text-secondary: #555;
+  --color-text-light: #777;
+  --color-text-muted: #999;
+  --color-background: #f4f4f9;
+  --color-white: #ffffff;
+  --color-border: #e0e0e0;
+  --color-success: #2ecc71;
+  --color-danger: #e74c3c;
+
+  /* Tipografia */
+  --font-family-sans: Arial, sans-serif;
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.2rem;
+  --font-size-xl: 1.5rem;
+  --font-size-sm: 0.9rem;
+  --font-size-xs: 0.8rem;
+
+  /* Outros */
+  --border-radius-md: 8px;
+  --border-radius-sm: 5px;
+  --main-border: 1px solid var(--color-border);
+}
+
+
+/* =================================== */
+/* 2. Reset e Estilos Globais
+/* =================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+
+  display: flex;                 
+  flex-direction: column;
+  min-height: 100vh; 
+
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+}
+
+
+:focus {
+  outline: 3px solid rgba(52, 152, 219, 0.4);
+  outline-offset: 2px;
+}
+
+
+/* =================================== */
+/* 3. Layout Principal
+/* =================================== */
+
+.container {
+  display: grid; 
+  grid-template-columns: 250px 1fr; 
+  gap: 3rem;
+  padding: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+
+/* =================================== */
+/* 4. Componentes
+/* =================================== */
+
+/* --- Cabeçalho --- */
+.main-header {
+  background-color: var(--color-white);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  border-bottom: var(--main-border);
+}
+
+.logo h1 {
+  font-size: var(--font-size-xl);
+  color: var(--color-secondary);
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.main-nav a.active, .main-nav a:hover {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.search-and-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-and-actions input:hover {
+  border-color: #1f1f1e;
+}
+.search-and-actions input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  outline: none;
+}
+.search-and-actions input {
+  font-size: var(--font-size-base);
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius-sm);
+  min-width: 250px;
+}
+
+/* --- Botões --- */
+.btn-announce {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-register {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.bnt-enter {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.category-btn {
+  background-color: #e9e9e9;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.category-btn.active {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
+}
+
+
+/* --- Filtros (Barra Lateral) --- */
+.filters {
+  background-color: var(--color-white); 
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
+  border: var(--main-border);
+  height: fit-content;
+}
+
+.filters h2, .filters h3 {
+  margin-top: 0;
+  border-bottom: 3px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 2rem;
+  font-size: var(--font-size-lg);
+  color: var(--color-secondary);
+
+}
+
+.filter-group {
+  margin-bottom: 2rem;
+}
+
+.stats p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+
+/* --- Área de Conteúdo e Produtos --- */
+.content {
+  flex: 1;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 1.5rem;
+}
+
+
+/* --- Card de Produto --- */
+.product-card {
+  background-color: var(--color-white);
+  border: var(--main-border);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  display: flex; 
+  flex-direction: column;
+}
+
+.product-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.product-image .tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  border-radius: var(--border-radius-sm);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+}
+
+.tag.venda { background-color: var(--color-danger); }
+.tag.troca { background-color: var(--color-success); }
+
+
+.product-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+}
+
+.product-info h3 {
+  font-size: var(--font-size-base);
+  margin: 0 0 0.5rem 0;
+}
+
+.product-info .price {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.product-info .location {
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+  margin-bottom: 1rem;
+}
+
+.author-info {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  margin-bottom: 1rem;
+}
+
+.btn-chat {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 0.7rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  margin-top: auto; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-chat:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+
+/* --- Rodapé --- */
+.main-footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  margin-top: 2rem;
+}
