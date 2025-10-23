@@ -1,6 +1,6 @@
 # DesapegueFacil
 ## Descrição
-Aplicativo para [descrever objetivo], focado em [público-alvo].
+Aplicativo para conectar usuários em um marketplace, focado em doações e vendas para indivíduos e organizações necessitadas.
 ## Tecnologias Utilizadas
 - HTML5, CSS3, JavaScript
 - Node.js
