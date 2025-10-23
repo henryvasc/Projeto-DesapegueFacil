@@ -1,6 +1,6 @@
 # DesapegueFacil
 ## Descrição
-Aplicativo para conectar usuários em um marketplace, focado em doações e vendas para indivíduos e organizações necessitadas.
+Aplicativo para conectar usuários em um marketplace, focado em doações, trocas e vendas para indivíduos e organizações necessitadas.
 ## Tecnologias Utilizadas
 - HTML5, CSS3, JavaScript
 - Node.js
@@ -8,7 +8,7 @@ Aplicativo para conectar usuários em um marketplace, focado em doações e vend
 ## Estrutura do Projeto
 Explicação da divisão de pastas.
 ## Protótipo
-Link para o protótipo no Figma: [link]
+Link para o protótipo no Figma: https://www.figma.com/make/FDE1V2hPRp0vSg6WVeEJS6/Marketplace-de-Troca-de-Produtos-e-Doações?node-id=0-7&t=eVI47M9O4BC4jYGN-1
 ## Integrantes
 - Fulano – Front-end
 - Ciclano – Back-end
