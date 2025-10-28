@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - DesapegueFácil</title>
+    <link rel="stylesheet" href="perfil-style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <h1><a href="index.html">DesapegueFácil</a></h1>
+        </div>
+        <div class="search-and-actions">
+            <a href="anuncio.html" class="btn-announce" id="announceBtn">+ Anunciar</a>
+            <a href="chat.html" class="btn-icon" id="chatBtn" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </a>
+            <button class="btn-icon" id="notifyBtn" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            </button>
+            <a href="perfil.html" class="btn-profile" id="profileBtn" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="profile-container">
+
+        <section class="profile-card info-card">
+            <h2>Meu Perfil</h2>
+            <p>Estas são as suas informações de cadastro.</p>
+
+            <div class="profile-info">
+                <div class="info-item">
+                    <strong>Nome / Razão Social:</strong>
+                    <span id="profile-name">Carregando...</span>
+                </div>
+                <div class="info-item">
+                    <strong>E-mail de Contato:</strong>
+                    <span id="profile-email">Carregando...</span>
+                </div>
+                <div class="info-item">
+                    <strong>ID de Usuário:</strong>
+                    <span id="profile-id">Carregando...</span>
+                </div>
+            </div>
+
+            <button id="logoutBtn" class="btn-logout">Sair (Logout)</button>
+        </section>
+
+        <section class="profile-card activity-card">
+            <h2>Minhas Doações / Vendas / Trocas</h2>
+            <p>Acompanhe suas transações e interações.</p>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <span class="activity-type donation">Doação</span>
+                    <span class="activity-desc">Lote de Livros Infantis</span>
+                    <span class="activity-recipient">para Casa da Criança Esperança</span>
+                    <span class="activity-status">Confirmada</span>
+                </div>
+                 <div class="activity-item">
+                    <span class="activity-type sale">Venda</span>
+                    <span class="activity-desc">iPhone 13 Pro Max</span>
+                    <span class="activity-recipient">para João Silva</span>
+                    <span class="activity-status">Em negociação</span>
+                </div>
+                 <p class="placeholder-text">(Nenhuma atividade recente)</p>
+            </div>
+        </section>
+
+        <section class="profile-card listings-card">
+             <h2>Meus Anúncios</h2>
+             <p>Gerencie os itens que você publicou.</p>
+             <div class="listings-grid">
+                 <div class="listing-item-card">
+                     <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSl2IUljx1ewH6VZfrQ96_fZy_mcdF-Z0qecSqFDfvChmQK1SNbV4XZ5kghFxUnu3reudQafIenu1RpV7ox6Bvpc6U1AMJqao5jeU40tq987j3dPsIXKDOO" alt="iPhone">
+                     <div class="listing-info">
+                         <h3>iPhone 13 Pro Max</h3>
+                         <span class="listing-status sale">Venda Ativa</span>
+                     </div>
+                     <div class="listing-actions">
+                         <button>Editar</button>
+                         <button>Desativar</button>
+                     </div>
+                 </div>
+                  <p class="placeholder-text">(Você ainda não publicou anúncios)</p>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 DesapegueFácil. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="authUI.js" defer></script>
+    <script src="perfil.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Organização - DesapegueFácil</title>
+    
+    <link rel="stylesheet" href="register-ong-style.css">
+    <link rel="stylesheet" href="index-style.css"> 
+    
+    <link rel="stylesheet" href="register-ong-wizard.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <h1><a href="index.html">DesapegueFácil</a></h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><button class="btn-nav active">Explorar</button></li>
+                <li><button class="btn-nav">Vendas</button></li>
+                <li><button class="btn-nav">Doações</button></li>
+                <li><button class="btn-nav">Instruções</button></li>
+            </ul>
+        </nav>
+        <div class="search-and-actions">
+            <button class="btn-icon" id="chatBtn" style="display: none;"></button>
+            <button class="btn-icon" id="notifyBtn" style="display: none;"></button>
+            <a href="perfil.html" class="btn-profile" id="profileBtn" style="display: none;"></a>
+        </div>
+    </header>
+
+    <main class="wizard-container">
+        
+        <form class="wizard-card" id="ongWizardForm"> 
+            <div class="wizard-header">
+                <div class="wizard-title-step">
+                    <h2>Cadastrar Organização</h2>
+                    <span id="step-subtitle">Passo 1 de 5 - Preencha as informações da sua ONG</span>
+                </div>
+                <div class="wizard-breadcrumb">
+                    <a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span>Cadastro ONG</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progress-bar-fill" style="width: 20%;"></div>
+            </div>
+
+            <fieldset class="wizard-step-content active" data-step="1">
+                <legend class="form-section-title">Informações Básicas da ONG</legend>
+                
+                <div class="form-group">
+                    <label for="nome-org">Nome da Organização*</label>
+                    <input type="text" id="nome-org" name="nome-org" placeholder="Ex: Instituto Esperança" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria-org">Categoria*</label>
+                    <select id="categoria-org" name="categoria-org" required>
+                        <option value="" disabled selected>Selecione a área de atuação</option>
+                        <option value="animais">Animais</option>
+                        <option value="assistencia-social">Assistência Social</option>
+                        <option value="cultura">Cultura</option>
+                        <option value="saude">Saúde</option>
+                        <option value="meio-ambiente">Meio Ambiente</option>
+                        <option value="educacao">Educação e Pesquisa</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao-org">Descrição da Organização*</label>
+                    <textarea id="descricao-org" name="descricao-org" rows="4" placeholder="Descreva brevemente o que a organização faz..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="missao-org">Missão e Objetivos*</label>
+                    <textarea id="missao-org" name="missao-org" rows="4" placeholder="Qual é a missão da organização? Quais objetivos pretende alcançar?" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="ano-fundacao">Ano de Fundação</label>
+                    <input type="number" id="ano-fundacao" name="ano-fundacao" placeholder="2020" min="1900" max="2025">
+                </div>
+            </fieldset>
+
+            <fieldset class="wizard-step-content" data-step="2">
+                <legend class="form-section-title">Contato e Responsável</legend>
+                
+                <h3 class="form-sub-section-title">Contatos da Organização</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email-org">E-mail Oficial*</label>
+                        <input type="email" id="email-org" name="email-org" placeholder="contato@instituto.org.br" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone-org">Telefone* (Apenas números)</label>
+                        <input type="tel" id="telefone-org" name="telefone-org" placeholder="(11) 99999-9999" required maxlength="15">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="website">Website (Opcional)</label>
+                        <input type="url" id="website" name="website" placeholder="https://www.instituto.org.br">
+                    </div>
+                    <div class="form-group">
+                        <label for="cnpj">CNPJ*</label>
+                        <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required>
+                    </div>
+                </div>
+
+                <h3 class="form-sub-section-title">Responsável Legal</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome-resp">Nome Completo*</label>
+                        <input type="text" id="nome-resp" name="nome-resp" placeholder="Nome do responsável" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cargo-resp">Cargo/Função*</label>
+                        <input type="text" id="cargo-resp" name="cargo-resp" placeholder="Presidente, Diretor, etc." required>
+                    </div>
+                </div>
+                 <div class="form-row">
+                    <div class="form-group">
+                        <label for="email-resp">E-mail do Responsável</label>
+                        <input type="email" id="email-resp" name="email-resp" placeholder="responsavel@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone-resp">Telefone do Responsável (Apenas números)</label>
+                        <input type="tel" id="telefone-resp" name="telefone-resp" placeholder="(11) 99999-9999" maxlength="15">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="wizard-step-content" data-step="3">
+                <legend class="form-section-title">Localização</legend>
+                
+                <div class="form-group">
+                    <label for="cep">CEP* (Apenas números)</label>
+                    <input type="text" id="cep" name="cep" placeholder="00000000" required maxlength="8">
+                    <small class="hint">Digite o CEP para preencher a cidade e estado.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="endereco">Endereço Completo* (Rua, N°, Bairro)</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cidade">Cidade*</label>
+                        <input type="text" id="cidade" name="cidade" placeholder="São Paulo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado*</label>
+                        <input type="text" id="estado" name="estado" placeholder="SP" required maxlength="2">
+                    </div>
+                </div>
+
+                <div class="info-box info">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <div>
+                        <strong>Endereço Físico Obrigatório</strong>
+                        <p>É necessário ter um endereço físico para verificação da legitimidade da organização.</p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="wizard-step-content" data-step="4">
+                <legend class="form-section-title">Documentação e Verificação</legend>
+                
+                <div class="info-box warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <div>
+                        <strong>Documentos Obrigatórios</strong>
+                        <p>Envie os documentos para verificação da legitimidade da organização.</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Documentos da Organização*</label>
+                    <p class="form-hint">Envie pelo menos um dos documentos listados abaixo:</p>
+                    <ul class="doc-list">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Cartão CNPJ (obrigatório)</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Estatuto Social</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                     <div class="foto-dropzone" id="doc-dropzone">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <span>Enviar Documentos (Simulação)</span>
+                        <small>PDF, JPG ou PNG - Máximo 10MB</small>
+                    </div>
+                    <div id="doc-preview-container"></div>
+                </div>
+            </fieldset>
+
+            <fieldset class="wizard-step-content" data-step="5">
+                <legend class="form-section-title">Necessidades e Finalização</legend>
+                
+                <div class="form-group">
+                    <label>Principais Necessidades da Organização</label>
+                    <p class="form-hint">Selecione as categorias de doações que sua organização mais precisa (clique para selecionar):</p>
+                    <div class="needs-grid">
+                        <div class="needs-card" data-need="brinquedos"><span>🧸</span><p>Brinquedos</p></div>
+                        <div class="needs-card" data-need="roupas"><span>👕</span><p>Roupas</p></div>
+                        <div class="needs-card" data-need="livros"><span>📚</span><p>Livros</p></div>
+                        <div class="needs-card" data-need="moveis"><span>🪑</span><p>Móveis</p></div>
+                        <div class="needs-card" data-need="eletronicos"><span>💻</span><p>Eletrônicos</p></div>
+                        <div class="needs-card" data-need="alimentos"><span>🥫</span><p>Alimentos</p></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Fotos da Organização (Opcional)</label>
+                    <p class="form-hint">Adicione fotos que mostrem o trabalho da organização</p>
+                    <div class="foto-dropzone" id="foto-dropzone-ong">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <span>Adicionar Fotos</span>
+                        <small>Até 5 fotos</small>
+                        <input type="file" id="fotos-org" name="fotos-org" multiple accept="image/*" style="display: none;">
+                    </div>
+                    <div id="foto-preview-container"></div>
+                </div>
+
+                <div class="final-terms">
+                    <input type="checkbox" id="termos-final" name="termos-final" required>
+                    <div>
+                        <label for="termos-final">Aceito os termos de uso e declaro que todas as informações fornecidas são verdadeiras</label>
+                        <p>Ao cadastrar a organização, você concorda que as informações serão verificadas.</p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="step-nav-buttons">
+                <button type="button" class="btn-secondary" id="prevBtn" disabled>Anterior</button>
+                <button type="button" class="btn-primary" id="nextBtn">Próximo</button>
+                <button type="submit" class="btn-primary" id="submitBtn" style="display: none;">Finalizar Cadastro</button>
+            </div>
+        </form>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 DesapegueFácil. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="authUI.js" defer></script>
+    <script src="register-ong-wizard.js" defer></script>
+    <script src="viacep-ong.js" defer></script> 
+    
+</body>
+</html>
