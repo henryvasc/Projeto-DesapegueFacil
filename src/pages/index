@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="product-card" data-type="doacao" data-category="outros">
-                    <div class="product-image" style="background-image: url('https://http2.mlstatic.com/D_NQ_NP_667926-MLB50937820313_072022-O.webp');">
+                    <div class="product-image" style="background-image: url();">
                         <span class="tag doacao">DOAÇÃO</span>
                     </div>
                     <div class="product-info">
@@ -139,7 +139,7 @@
                 </div>
 
                 <div class="product-card" data-type="venda" data-category="veiculos">
-                    <div class="product-image" style="background-image: url('https://img2.gratis.com.br/images/veiculo/584_384_20230215163155_2_G.jpg');">
+                    <div class="product-image" style="background-image: url();">
                         <span class="tag venda">VENDA</span>
                     </div>
                     <div class="product-info">
@@ -155,7 +155,7 @@
                 </div>
 
                 <div class="product-card" data-type="venda" data-category="eletronicos">
-                    <div class="product-image" style="background-image: url('https://images.tcdn.com.br/img/img_prod/1104932/notebook_dell_latitude_5490_core_i5_8350u_8gb_ssd_256gb_14_windows_11_pro_1033_1_8673f8a4f66a3d9e80c41b8c039d933b.jpg');">
+                    <div class="product-image" style="background-image: url();">
                         <span class="tag venda">VENDA</span>
                     </div>
                     <div class="product-info">
@@ -171,7 +171,7 @@
                 </div>
 
                 <div class="product-card" data-type="doacao" data-category="casa">
-                    <div class="product-image" style="background-image: url('https://cdn.leroymerlin.com.br/products/jogo_de_pratos_fundos_rasos_e_sobremesa_biona_ceramica_2_1570138940_3d2c_600x600.jpg');">
+                    <div class="product-image" style="background-image: url();">
                         <span class="tag doacao">DOAÇÃO</span>
                     </div>
                     <div class="product-info">
@@ -191,7 +191,7 @@
             <div class="institution-grid" id="institution-grid" style="display: none;">
 
                 <div class="institution-card" data-category="assistencia-social">
-                    <div class="institution-image" style="background-image: url('https://via.placeholder.com/300x200/cccccc/888888?text=Imagem+ONG+1');">
+                    <div class="institution-image" style="background-image: url();">
                         <span class="tag verificada">Verificada</span>
                     </div>
                     <div class="institution-info">
@@ -218,7 +218,7 @@
                 </div>
 
                 <div class="institution-card" data-category="assistencia-social">
-                     <div class="institution-image" style="background-image: url('https://via.placeholder.com/300x200/cccccc/888888?text=Imagem+ONG+2');">
+                     <div class="institution-image" style="background-image: url();">
                         <span class="tag verificada">Verificada</span>
                     </div>
                     <div class="institution-info">
@@ -244,7 +244,7 @@
                 </div>
 
                 <div class="institution-card" data-category="animais">
-                     <div class="institution-image" style="background-image: url('https://via.placeholder.com/300x200/cccccc/888888?text=Imagem+ONG+3');">
+                     <div class="institution-image" style="background-image: url();">
                         <span class="tag verificada">Verificada</span>
                     </div>
                     <div class="institution-info">
@@ -270,7 +270,7 @@
                 </div>
 
                 <div class="institution-card" data-category="educacao">
-                     <div class="institution-image" style="background-image: url('https://via.placeholder.com/300x200/cccccc/888888?text=Imagem+ONG+4');">
+                     <div class="institution-image" style="background-image: url();">
 
                     </div>
                     <div class="institution-info">
