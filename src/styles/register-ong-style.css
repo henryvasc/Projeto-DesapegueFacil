@@ -1,0 +1,507 @@
+/* =================================== */
+/* 1. Variáveis Globais e Reset
+/* =================================== */
+:root {
+  --color-primary: #3498db;
+  --color-secondary: #2c3e50;
+  --color-text-primary: #333;
+  --color-text-secondary: #555;
+  --color-text-light: #777;
+  --color-text-muted: #999;
+  --color-background: #f4f4f9;
+  --color-white: #ffffff;
+  --color-border: #e0e0e0;
+  --color-success: #2ecc71;
+  --color-danger: #e74c3c;
+  --font-family-sans: Arial, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.2rem;
+  --font-size-xl: 1.5rem;
+  --font-size-sm: 0.9rem;
+  --border-radius-md: 8px;
+  --border-radius-sm: 5px;
+  --main-border: 1px solid var(--color-border);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a { text-decoration: none; color: var(--color-primary); }
+ul { list-style: none; }
+:focus {
+  outline: 3px solid rgba(52, 152, 219, 0.4);
+  outline-offset: 2px;
+}
+
+/* =================================== */
+/* 2. Layout Principal (Container)
+/* =================================== */
+.wizard-container {
+  display: grid;
+  place-items: center; 
+  flex-grow: 1; 
+  padding: 2rem 1rem;
+}
+
+.wizard-card {
+  background-color: var(--color-white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius-md);
+  border: var(--main-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 768px; /* Mais largo que o login */
+}
+
+/* =================================== */
+/* 3. Cabeçalho do Wizard
+/* =================================== */
+.wizard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: var(--main-border);
+}
+
+.wizard-title-step h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-secondary);
+  margin-bottom: 0.25rem;
+}
+.wizard-title-step span {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+}
+
+.wizard-breadcrumb a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    border: var(--main-border);
+}
+.wizard-breadcrumb svg {
+    stroke-width: 2.5;
+}
+
+.btn-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  font-size: var(--font-size-sm);
+}
+.btn-voltar:hover {
+  color: var(--color-primary);
+}
+.btn-voltar svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* =================================== */
+/* 4. Barra de Progresso
+/* =================================== */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--color-secondary); /* Cor da barra de progresso */
+    border-radius: var(--border-radius-md);
+    transition: width 0.3s ease-in-out;
+}
+
+/* =================================== */
+/* 5. Conteúdo do Formulário (Passo)
+/* =================================== */
+.wizard-step-content {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-section-title {
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    display: block;
+    width: 100%;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Título de sub-seção */
+.form-sub-section-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+.wizard-step-content fieldset .form-sub-section-title:first-of-type {
+    margin-top: 0;
+}
+
+
+/* Estilos de Formulário */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-sans);
+  background-color: #fcfcfc; /* Fundo claro para inputs */
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    background-color: var(--color-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Hint de formulário */
+.form-hint {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-top: -0.75rem;
+    margin-bottom: 1rem;
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 16px;
+  padding-right: 2.5rem;
+}
+
+/* Layout em colunas */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =================================== */
+/* 6. Estilos Específicos dos Passos
+/* =================================== */
+
+/* --- Caixas de Informação (Info/Warning) --- */
+.info-box {
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+.info-box.info {
+    background-color: #eaf5fd;
+    border: 1px solid #bce0f9;
+    color: #1c5f8e;
+}
+.info-box.warning {
+    background-color: #fff8e6;
+    border: 1px solid #ffe6b0;
+    color: #8a6800;
+}
+.info-box svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.info-box strong {
+    display: block;
+    font-size: 0.9rem;
+}
+.info-box p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* --- Passo 4: Lista de Documentos --- */
+.doc-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+.doc-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+}
+.doc-list svg {
+    stroke: var(--color-success);
+    stroke-width: 3;
+}
+
+/* --- Dropzone de Fotos / Documentos --- */
+.foto-dropzone {
+  border: 2px dashed var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.foto-dropzone:hover {
+  background-color: #fcfcfc;
+  border-color: var(--color-primary);
+}
+.foto-dropzone svg {
+  stroke: var(--color-primary);
+}
+.foto-dropzone span {
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-top: 1rem;
+}
+.foto-dropzone small {
+  color: var(--color-text-light);
+  margin-top: 0.25rem;
+}
+
+/* --- Preview de Documento (Simulação) --- */
+#doc-preview-container {
+    margin-top: 1rem;
+}
+.doc-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    color: var(--color-text-primary);
+}
+.doc-preview-item svg {
+    stroke: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+.doc-preview-item span {
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+}
+
+
+/* --- Passo 4: Checklist de Verificação --- */
+.verification-checklist {
+    list-style: none;
+    padding-left: 0;
+}
+.verification-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    background-color: #fcfcfc;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+}
+.verification-checklist input[type="checkbox"] {
+    width: auto;
+    flex-shrink: 0;
+}
+.verification-checklist label {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+/* --- Passo 5: Grid de Necessidades --- */
+.needs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.needs-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.needs-card:hover,
+.needs-card.active { /* Classe 'active' adiconada via JS */
+    border-color: var(--color-primary);
+    background-color: #f0f8ff;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+    transform: scale(1.05); /* Efeito de clique */
+}
+.needs-card span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.needs-card p {
+    font-weight: bold;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+}
+
+/* --- Preview da Foto (Simulação) --- */
+#foto-preview-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+#foto-preview-container img {
+    max-width: 200px;
+    height: auto;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-border);
+}
+
+/* --- Passo 5: Termos Finais --- */
+.final-terms {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--color-background);
+    border-radius: var(--border-radius-sm);
+}
+.final-terms input {
+    width: auto;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+.final-terms div {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+.final-terms label {
+    font-weight: bold;
+    color: var(--color-text-primary);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+
+/* =================================== */
+/* 7. Botões de Navegação (Passos)
+/* =================================== */
+.step-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: var(--main-border);
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.8rem 1.5rem;
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--color-secondary); /* Cor do botão primário */
+  color: var(--color-white);
+}
+.btn-primary:hover {
+  background-color: #1d2a38;
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+.btn-secondary:hover {
+  background-color: var(--color-background);
+  border-color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+}
+.btn-secondary[disabled] {
+    opacity: .5;
+    cursor: not-allowed;
+    background-color: var(--color-background);
+    color: var(--color-text-muted);
+    border-color: var(--color-border);
+    transform: none;
+    box-shadow: none;
+}

@@ -1,0 +1,474 @@
+/* =================================== */
+/* 1. Variáveis Globais (Root)
+/* =================================== */
+:root {
+  --color-primary: #3498db;
+  --color-secondary: #2c3e50;
+  --color-text-primary: #333;
+  --color-text-secondary: #555;
+  --color-text-light: #777;
+  --color-text-muted: #999;
+  --color-background: #f4f4f9;
+  --color-white: #ffffff;
+  --color-border: #e0e0e0;
+  --color-success: #2ecc71;
+  --color-danger: #e74c3c;
+  --font-family-sans: Arial, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.2rem;
+  --font-size-xl: 1.5rem;
+  --font-size-sm: 0.9rem;
+  --font-size-xs: 0.8rem;
+  --border-radius-md: 8px;
+  --border-radius-sm: 5px;
+  --main-border: 1px solid var(--color-border);
+  
+  /* Cores de Validação */
+  --cor-fundo-sucesso: #ecffef;
+  --cor-fundo-erro: #ffecec;
+  --cor-fundo-meter: #eee;
+  --cor-senha-fraca: #f66;
+  --cor-senha-media: #fc3;
+}
+
+/* =================================== */
+/* 2. Reset e Estilos Globais
+/* =================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+:focus {
+  outline: 3px solid rgba(52, 152, 219, 0.4);
+  outline-offset: 2px;
+}
+
+/* =================================== */
+/* 4. Componentes Comuns (Header/Footer)
+/* =================================== */
+.main-header {
+  background-color: var(--color-white);
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: var(--main-border);
+}
+
+.logo {
+  width: 100%;
+  text-align: center;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.main-nav a {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.search-and-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.search-and-actions input {
+  font-size: var(--font-size-base);
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius-sm);
+  min-width: 0;
+  width: 100%;
+}
+
+.search-and-actions input:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  outline: none;
+}
+
+
+
+.btn-announce,
+.btn-register,
+.btn-enter {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.btn-announce:hover,
+.btn-register:hover,
+.btn-enter:hover {
+  transform: translateY(-1px); 
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.5); 
+}
+
+.btn-announce {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-register {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.btn-enter {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.main-footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  margin-top: 2rem;
+}
+
+/* =================================== */
+/* 5. Responsividade (Tablet)
+/* =================================== */
+@media (min-width: 768px) {
+  .main-header {
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: auto;
+    text-align: left;
+  }
+
+  .main-nav ul {
+    width: auto;
+  }
+
+  .search-and-actions {
+    width: 50%;
+  }
+
+  .search-and-actions input {
+    width: auto;
+    flex-grow: 1;
+  }
+
+  .btn-announce,
+  .btn-register,
+  .bnt-enter {
+    flex-grow: 0;
+  }
+}
+
+/* =================================== */
+/* 6. Responsividade (Desktop)
+/* =================================== */
+@media (min-width: 960px) {
+  .main-header {
+    flex-wrap: nowrap;
+    padding: 1rem 2rem;
+  }
+
+  .search-and-actions {
+    width: auto;
+    gap: 1rem;
+  }
+
+  .search-and-actions input {
+    min-width: 250px;
+  }
+}
+/* =================================== */
+/* 7. Estilos da Página de Login
+/* =================================== */
+
+.login-container {
+  display: grid;
+  place-items: center; 
+  flex-grow: 1; 
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  background-color: var(--color-white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius-md);
+  border: var(--main-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.login-card h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.login-card p {
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Estilos para o formulário */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+}
+
+.form-options {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.forgot-password {
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Botões específicos da página */
+.btn-login {
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 0.8rem;
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #2980b9; 
+}
+
+.btn-create-account {
+  width: 100%;
+  display: block;
+  background-color: var(--color-white);
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  padding: 0.8rem;
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-create-account:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+/* Divisor */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-muted);
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.divider:not(:empty)::before {
+  margin-right: 1em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 1em;
+}
+
+.divider p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* =================================== */
+/* 9. Estilos do Seletor de Tipo (Toggle)
+/* =================================== */
+
+/* Estilo do Seletor de Tipo */
+.toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.toggle-group input[type="radio"] {
+  display: none;
+}
+.toggle-group .toggle-btn {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  font-weight: 500;
+  flex-grow: 1; /* Faz os botões ocuparem espaço igual */
+  text-align: center;
+}
+.toggle-group input[type="radio"]:checked + .toggle-btn {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
+}
+
+/* =================================== */
+/* 10. ESTILOS DE VALIDAÇÃO DE FORMULÁRIO
+/* =================================== */
+
+.form-group input.erro {
+    border-color: var(--color-danger);
+    background: var(--cor-fundo-erro);
+}
+.form-group input.ok {
+    border-color: var(--color-success);
+    background: var(--cor-fundo-sucesso);
+}
+.hint {
+    font-size: 0.9rem;
+    height: 1.2rem;
+    color: var(--color-text-secondary);
+    display: block;
+    margin-top: 4px;
+}
+.form-group input.erro + .hint,
+.form-group .password-wrapper input.erro ~ .hint,
+.form-terms .hint {
+    color: var(--color-danger);
+}
+.meter {
+    height: 8px;
+    background: var(--cor-fundo-meter);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 6px 0;
+}
+.meter > div {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+.meter .fraca { background: var(--cor-senha-fraca); }
+.meter .media { background: var(--cor-senha-media); }
+.meter .forte { background: var(--color-success); }
+button[disabled] {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+/* =================================== */
+/* 11. ESTILOS DO BOTÃO "VER SENHA"
+/* =================================== */
+
+.password-wrapper {
+    position: relative;
+}
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] {
+    padding-right: 3rem; 
+}
+.btn-toggle-senha {
+    position: absolute;
+    top: 50%;
+    right: 0.8rem;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-toggle-senha svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-text-light);
+    stroke-width: 2;
+    fill: none;
+}
+.btn-toggle-senha:hover svg {
+    stroke: var(--color-primary);
+}

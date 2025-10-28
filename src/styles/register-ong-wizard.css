@@ -1,0 +1,13 @@
+/* =================================== */
+/* CSS do Wizard (Mostrar/Ocultar Passos)
+/* =================================== */
+
+/* Esconde todos os passos (fieldsets) por padrão */
+.wizard-step-content {
+    display: none;
+}
+
+/* Mostra apenas o passo que tiver a classe 'active' */
+.wizard-step-content.active {
+    display: block;
+}

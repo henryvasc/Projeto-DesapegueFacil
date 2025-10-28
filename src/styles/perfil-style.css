@@ -1,0 +1,529 @@
+/* =================================== */
+/* 1. Variáveis Globais (Root)
+/* =================================== */
+:root {
+  --color-primary: #3498db;
+  --color-secondary: #2c3e50;
+  --color-text-primary: #333;
+  --color-text-secondary: #555;
+  --color-text-light: #777;
+  --color-text-muted: #999;
+  --color-background: #f4f4f9;
+  --color-white: #ffffff;
+  --color-border: #e0e0e0;
+  --color-success: #2ecc71;
+  --color-danger: #e74c3c;
+  --font-family-sans: Arial, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.2rem;
+  --font-size-xl: 1.5rem;
+  --font-size-sm: 0.9rem;
+  --font-size-xs: 0.8rem;
+  --border-radius-md: 8px;
+  --border-radius-sm: 5px;
+  --main-border: 1px solid var(--color-border);
+  
+  /* Cores de Validação */
+  --cor-fundo-sucesso: #ecffef;
+  --cor-fundo-erro: #ffecec;
+  --cor-fundo-meter: #eee;
+  --cor-senha-fraca: #f66;
+  --cor-senha-media: #fc3;
+}
+
+/* =================================== */
+/* 2. Reset e Estilos Globais
+/* =================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+:focus {
+  outline: 3px solid rgba(52, 152, 219, 0.4);
+  outline-offset: 2px;
+}
+
+/* =================================== */
+/* 4. Componentes Comuns (Header/Footer)
+/* =================================== */
+.main-header {
+  background-color: var(--color-white);
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: var(--main-border);
+}
+
+.logo {
+  width: 100%;
+  text-align: center;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.main-nav a {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.search-and-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.search-and-actions input {
+  font-size: var(--font-size-base);
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius-sm);
+  min-width: 0;
+  width: 100%;
+}
+
+.search-and-actions input:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  outline: none;
+}
+
+
+
+.btn-announce,
+.btn-register,
+.btn-enter {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.btn-announce:hover,
+.btn-register:hover,
+.btn-enter:hover {
+  transform: translateY(-1px); 
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.5); 
+}
+
+.btn-announce {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-register {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.btn-enter {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.main-footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  margin-top: 2rem;
+}
+
+/* =================================== */
+/* 5. Responsividade (Tablet)
+/* =================================== */
+@media (min-width: 768px) {
+  .main-header {
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: auto;
+    text-align: left;
+  }
+
+  .main-nav ul {
+    width: auto;
+  }
+
+  .search-and-actions {
+    width: 50%;
+  }
+
+  .search-and-actions input {
+    width: auto;
+    flex-grow: 1;
+  }
+
+  .btn-announce,
+  .btn-register,
+  .bnt-enter {
+    flex-grow: 0;
+  }
+}
+
+/* =================================== */
+/* 6. Responsividade (Desktop)
+/* =================================== */
+@media (min-width: 960px) {
+  .main-header {
+    flex-wrap: nowrap;
+    padding: 1rem 2rem;
+  }
+
+  .search-and-actions {
+    width: auto;
+    gap: 1rem;
+  }
+
+  .search-and-actions input {
+    min-width: 250px;
+  }
+}
+
+/* =================================== */
+/* 7. Estilos Base (Layout do Card)
+/* =================================== */
+
+.login-container {
+  display: grid;
+  place-items: center; 
+  flex-grow: 1; 
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  background-color: var(--color-white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius-md);
+  border: var(--main-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.login-card h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.login-card p {
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* =================================== */
+/* 9. Estilos dos Botões de Ação
+/* =================================== */
+
+.btn-logout {
+    flex-grow: 1;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    
+    /* Estilo específico de "perigo" (logout) */
+    background-color: var(--color-danger);
+    color: var(--color-white);
+    font-size: var(--font-size-base);
+    width: 100%; /* Garante que ocupe o espaço no card */
+}
+
+.btn-logout:hover {
+    transform: translateY(-1px); 
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.5); 
+}
+
+/* Estilo do Botão de Perfil (Ícone) */
+.btn-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 50%; /* Torna o botão redondo */
+    width: 40px;  /* Largura fixa */
+    height: 40px; /* Altura fixa */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-profile:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-profile svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* =================================== */
+/* 12. Estilos da Página de Perfil
+/* =================================== */
+
+/* Container principal da página de perfil */
+.profile-container {
+  display: flex; /* Organiza os cards */
+  flex-direction: column; /* Um card abaixo do outro */
+  align-items: center; /* Centraliza os cards */
+  gap: 2rem; /* Espaço entre os cards */
+  flex-grow: 1;
+  padding: 2rem 1rem;
+}
+
+/* Card base */
+.profile-card {
+  background-color: var(--color-white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius-md);
+  border: var(--main-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 700px; /* Largura um pouco maior para acomodar listas */
+}
+
+/* Card de Informações */
+.info-card {
+   text-align: center; /* Centraliza título e botão logout */
+   max-width: 500px; /* Mantém card de info mais estreito */
+}
+.info-card h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+.info-card p {
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.profile-info { /* Caixa com os dados */
+    text-align: left;
+    margin-bottom: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+}
+.profile-info .info-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+.profile-info .info-item:last-child {
+    border-bottom: none;
+}
+.profile-info .info-item strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.25rem;
+}
+.profile-info .info-item span {
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+    word-break: break-all;
+}
+
+.btn-logout { /* Botão Sair */
+    padding: 0.8rem 1.5rem; /* Ajuste padding */
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--color-danger);
+    color: var(--color-white);
+    font-size: var(--font-size-base);
+    display: inline-block; /* Não ocupa largura total */
+    width: auto;
+}
+.btn-logout:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+}
+
+
+/* --- Estilos para Seção de Atividades --- */
+.activity-card h2, .listings-card h2 {
+    font-size: var(--font-size-lg);
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+}
+.activity-card p, .listings-card p {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: var(--font-size-sm);
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.activity-item {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebra em telas menores */
+    gap: 0.5rem 1rem; /* Espaço vertical e horizontal */
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+    align-items: center;
+}
+.activity-type {
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: var(--font-size-xs);
+    flex-shrink: 0;
+}
+.activity-type.donation { background-color: var(--color-primary); }
+.activity-type.sale { background-color: var(--color-danger); }
+
+.activity-desc {
+    font-weight: 500;
+    color: var(--color-text-primary);
+    flex-grow: 1; /* Ocupa espaço */
+}
+.activity-recipient {
+    color: var(--color-text-light);
+}
+.activity-status {
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin-left: auto; /* Alinha à direita */
+    flex-shrink: 0;
+}
+
+/* Placeholder para listas vazias */
+.placeholder-text {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-top: 1rem;
+    font-size: var(--font-size-sm) !important; /* Sobrescreve margem */
+}
+
+
+/* --- Estilos para Seção de Anúncios --- */
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Grid responsivo */
+    gap: 1rem;
+}
+
+.listing-item-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.listing-item-card img {
+    width: 100%;
+    height: 120px; /* Altura fixa para imagem */
+    object-fit: cover;
+}
+.listing-info {
+    padding: 0.75rem;
+}
+.listing-info h3 {
+    font-size: var(--font-size-sm);
+    margin: 0 0 0.3rem 0;
+}
+.listing-status {
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: var(--border-radius-sm);
+    color: var(--color-white);
+}
+.listing-status.sale { background-color: var(--color-danger); }
+.listing-status.donation { background-color: var(--color-primary); }
+
+.listing-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 0.75rem 0.75rem 0.75rem;
+    margin-top: auto; /* Empurra para baixo */
+}
+.listing-actions button {
+    flex-grow: 1;
+    padding: 0.4rem 0.8rem;
+    font-size: var(--font-size-xs);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    color: var(--color-text-secondary);
+}
+.listing-actions button:hover {
+    background-color: var(--color-border);
+    color: var(--color-text-primary);
+}
+
+
+/* Ajustes responsivos */
+@media (min-width: 768px) {
+    .btn-logout {
+        flex-grow: 0; /* Impede que o botão estique no desktop */
+    }
+    
+    .btn-profile {
+        margin-left: 0.5rem;
+    }
+}
