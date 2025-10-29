@@ -11,9 +11,9 @@
 
 | Nome | Função |
 |------|---------|
-| Fulano | Front-end Developer |
-| Ciclano | Back-end Developer |
-| Beltrano | Design e Documentação |
+| Enzo Bittencourt Massarelli - 25009182/Henry Coura Antunes de Vasconcellos - 25002702| Front-end |
+| Felipe Staut- 25000741/Thomaz Soares Masutti – 25003246 | Design |
+| Thomaz Soares Masutti – 25003246/Arthur Santos Pereira – 25001490 | Documentação |
 
 ---
 
@@ -45,8 +45,6 @@
 - Mostra como será a futura integração com backend.
 
 ---
-
-## 🛠️ Histórico de Desenvolvimento
 
 ## 🗓 Histórico de Desenvolvimento
 
@@ -88,7 +86,6 @@ Este projeto foi desenvolvido em **três sprints principais**, com entregas prog
 - Interface de chat (`chat.html` + `chat-style.css`).
 - Correções de responsividade (960–1180px).
 - Modal funcional e integração de todos os módulos.
-- README completo e documentação final.
 
 ---
 
