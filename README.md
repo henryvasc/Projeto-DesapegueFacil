@@ -48,18 +48,66 @@
 
 ## 🛠️ Histórico de Desenvolvimento
 
-| Data | Atualização |
-|------|--------------|
-| **10/09/2025** | Estrutura inicial do projeto criada (`index.html`, `index-style.css`, `login.html`). |
-| **18/09/2025** | Adição de `authHandler.js` e `authUI.js` com simulação de login local. |
-| **26/09/2025** | Implementação do `filter.js` com filtragem por categoria e tipo. |
-| **02/10/2025** | Adição do wizard de cadastro de ONGs (`register-ong.html` + `register-ong-wizard.js`). |
-| **08/10/2025** | Implementação da integração com API ViaCEP (`viacep-ong.js`). |
-| **13/10/2025** | Criação do fluxo de doação (`donate.html` + `donate-wizard.js`). |
-| **18/10/2025** | Revisão visual completa do layout principal (`index-style.css` reorganizado e otimizado). |
-| **23/10/2025** | Adição da interface de chat (`chat.html` + `chat-style.css`). |
-| **25/10/2025** | Correção de responsividade entre **960px e 1180px** (versão atual do layout). |
-| **27/10/2025** | README completo atualizado com histórico e documentação técnica. |
+## 🗓 Histórico de Desenvolvimento
+
+Este projeto foi desenvolvido em **três sprints principais**, com entregas progressivas que evoluíram do protótipo inicial até o sistema completo com integração e layout responsivo.
+
+---
+
+### 🚀 **Sprints e Entregas**
+
+#### 🟢 **1ª Sprint – Protótipo Inicial**
+**Data:** 18/08/2025  
+**Objetivo:** Criação do protótipo navegável e definição da estrutura conceitual.  
+**Principais entregas:**
+- Wireframe e layout conceitual do projeto.
+- Estrutura base de navegação.
+- Primeira visão do fluxo de interação (prototipagem visual).
+
+---
+
+#### 🟡 **2ª Sprint – Estrutura Base (HTML e CSS)**
+**Data:** 24/09/2025  
+**Objetivo:** Construção da base do site em HTML e CSS.  
+**Principais entregas:**
+- Páginas `index.html` e `index-style.css` criadas.
+- Layout inicial do marketplace implementado.
+- Estrutura semântica e responsiva definida.
+
+---
+
+#### 🔵 **3ª Sprint – Entrega Final e Integração Completa**
+**Data:** 28/10/2025  
+**Objetivo:** Finalizar o sistema com todas as funcionalidades integradas e revisão visual completa.  
+**Principais entregas:**
+- Funcionalidade de login local (`authHandler.js` + `authUI.js`).
+- Sistema de filtragem (`filter.js`).
+- Cadastro de ONGs com wizard (`register-ong.html` + `register-ong-wizard.js`).
+- Integração com **API ViaCEP** (`viacep-ong.js`).
+- Fluxo de doações (`donate.html` + `donate-wizard.js`).
+- Interface de chat (`chat.html` + `chat-style.css`).
+- Correções de responsividade (960–1180px).
+- Modal funcional e integração de todos os módulos.
+- README completo e documentação final.
+
+---
+
+### 📅 **Linha do Tempo Detalhada**
+
+| Data | Descrição |
+|------|------------|
+| **18/08/2025** | 🧩 1ª Sprint – Entrega do protótipo inicial. |
+| **24/09/2025** | 💻 2ª Sprint – Entrega da estrutura base (`index.html`, `index-style.css`). |
+| **30/09/2025** | Estrutura inicial do projeto criada (organização de diretórios e arquivos principais). |
+| **05/10/2025** | Adição de `authHandler.js` e `authUI.js` com simulação de login local. |
+| **10/10/2025** | Implementação do `filter.js` com filtragem por categoria e tipo. |
+| **14/10/2025** | Adição do wizard de cadastro de ONGs (`register-ong.html` + `register-ong-wizard.js`). |
+| **18/10/2025** | Integração com API ViaCEP (`viacep-ong.js`). |
+| **21/10/2025** | Criação do fluxo de doação (`donate.html` + `donate-wizard.js`). |
+| **24/10/2025** | Revisão visual completa do layout principal (`index-style.css` reorganizado e otimizado). |
+| **26/10/2025** | Adição da interface de chat (`chat.html` + `chat-style.css`). |
+| **27/10/2025** | Correção de responsividade entre **960px e 1180px**. |
+| **28/10/2025** | 🚀 3ª Sprint – Entrega final com integração completa e modais funcionais. |
 
 ---
 
