@@ -207,7 +207,7 @@
                             </div>
                         </div>
                         <div class="institution-actions">
-                            <a href="donate.html" target="_blank" class="btn-donate">Doar Agora</a>
+                             <a href="donate.html" class="btn-donate">Doar Agora</a>
                             <button class="btn-details">Ver Detalhes</button>
                         </div>
                         <div class="institution-stats">
@@ -234,7 +234,7 @@
                             </div>
                         </div>
                        <div class="institution-actions">
-                            <a href="donate.html" target="_blank" class="btn-donate">Doar Agora</a>
+                             <a href="donate.html" class="btn-donate">Doar Agora</a>
                             <button class="btn-details">Ver Detalhes</button>
                         </div>
                          <div class="institution-stats">
@@ -260,7 +260,7 @@
                             </div>
                         </div>
                        <div class="institution-actions">
-                            <a href="donate.html" target="_blank" class="btn-donate">Doar Agora</a>
+                             <a href="donate.html" class="btn-donate">Doar Agora</a>
                             <button class="btn-details">Ver Detalhes</button>
                         </div>
                          <div class="institution-stats">
@@ -285,7 +285,7 @@
                             </div>
                         </div>
                        <div class="institution-actions">
-                            <a href="donate.html" target="_blank" class="btn-donate">Doar Agora</a>
+                             <a href="donate.html" class="btn-donate">Doar Agora</a>
                             <button class="btn-details">Ver Detalhes</button>
                         </div>
                          <div class="institution-stats">
@@ -312,7 +312,7 @@
                     </div>
                 </div>
                 <div class="modal-actions">
-                    <a href="donate.html" target="_blank" class="btn-donate">Doar Agora</a>
+                    <a href="donate.html" class="btn-donate">Doar Agora</a>
                 </div>
             </div>
         </div>
