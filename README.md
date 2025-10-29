@@ -74,7 +74,7 @@ Este projeto foi desenvolvido em **três sprints principais**, com entregas prog
 
 ---
 
-#### 🔵 **3ª Sprint – Entrega Final e Integração Completa**
+#### 🔵 **3ª Sprint – Penultima Entrega e Integração Quase Completa**
 **Data:** 28/10/2025  
 **Objetivo:** Finalizar o sistema com todas as funcionalidades integradas e revisão visual completa.  
 **Principais entregas:**
@@ -104,7 +104,7 @@ Este projeto foi desenvolvido em **três sprints principais**, com entregas prog
 | **24/10/2025** | Revisão visual completa do layout principal (`index-style.css` reorganizado e otimizado). |
 | **26/10/2025** | Adição da interface de chat (`chat.html` + `chat-style.css`). |
 | **27/10/2025** | Correção de responsividade entre **960px e 1180px**. |
-| **28/10/2025** | 🚀 3ª Sprint – Entrega final com integração completa e modais funcionais. |
+| **28/10/2025** | 🚀 3ª Sprint – Penultima Entrega e Integração Quase Completa |
 
 ---
 
@@ -118,6 +118,7 @@ Planeja-se, em breve:
 2.  **Dinamizar o Perfil do Usuário (perfil.html)** * Ir além de mostrar apenas o nome/email. * Usar o localStorage para simular uma "lista de anúncios" e "histórico de doações". * Fazer o perfil.js ler esses dados e preencher dinamicamente as seções "Minhas Doações" e "Meus Anúncios", que hoje são estáticas.
 3. **Melhorar a Validação do Wizard de Doação** * Atualmente, o usuário pode avançar do Passo 1 do donate-wizard.js sem adicionar itens. * A sugestão é desabilitar o botão "Continuar" por padrão e só habilitá-lo (via JavaScript) após o usuário adicionar pelo menos um item à lista de doação.
 4. **Ativar os Filtros da Sidebar na Home** * Expandir o filter.js para que ele também leia os botões da sidebar de filtros (index.html) de "Localização", "Preço" e "Condição". * Isso completaria a funcionalidade de filtragem da página inicial.
+5. **Implementar a API de verificação de ONG's** Atualmente não ha verificação da existencia e veracidade das ONG's. 
 
 ---
 
