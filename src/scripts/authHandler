@@ -7,7 +7,7 @@
 // Payload Padrão Usuário: {"sub":"123","name":"Usuário DesapegueFácil","iat":1516239022}
 const FAKE_JWT_TOKEN_USER = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJuYW1lIjoiVXN1w6FyaW8gRGVzYXBlZ3VlRsOhY2lsIiwiaWF0IjoxNTE2MjM5MDIyfQ.N_02-t1m6TppB-1z5Um361nHSNl-iQGjYk6Pqf-c3kY";
 // Payload Padrão Instituição: {"sub":"789","name":"ONG Instituição Exemplo","iat":1516239022,"type":"institution"}
-const FAKE_JWT_TOKEN_INST = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ODkiLCJuYW1lIjoiT05HIEluc3RpdHVpw6fDo28gRXhlbXBsbyIsImlhdCI6MTUxNjIzOTAyMiwidHlwZSI6Imluc3RpdHV0aW9uIn0.kswh-ztjOkx1wY1zLzC-Ld5s-iG9A-aZ-G-P-Y-k_kY"; // Assinatura simulada
+const FAKE_JWT_TOKEN_INST = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ODkiLCJuYW1lIjoiT05HIEluc3RpdHVpw6fDo28gRXhlbXBsbyIsImlhdCI6MTUxNjIzOTAyMiwidHlwZSI6Imluc3RpdHV0aW9uIn0.kswh-ztjOkx1wY1zLzC-Ld5s-iG9A-aZ-G-P-Y-k_kY";
 
 /**
  * Alterna a visibilidade do campo de senha entre 'password' e 'text'.
@@ -22,28 +22,34 @@ function togglePasswordVisibility(inputEl, buttonEl) {
     
     const iconEye = buttonEl.querySelector('.icon-eye');
     const iconEyeOff = buttonEl.querySelector('.icon-eye-off');
-    
     if (iconEye) iconEye.style.display = isPassword ? 'none' : 'block';
     if (iconEyeOff) iconEyeOff.style.display = isPassword ? 'block' : 'none';
-    
     buttonEl.setAttribute('aria-label', isPassword ? 'Ocultar senha' : 'Mostrar senha');
 }
 
 /**
- * Decodifica o payload de um token JWT (sem verificar a assinatura).
+ * Decodifica o payload de um token JWT de forma segura.
  * @param {string} token - O token JWT.
  * @returns {object|null} O payload decodificado ou null em caso de erro.
  */
 function parseJwtPayload(token) {
+    // CORREÇÃO DE BUG (Gravidade Alta): Verifica se o token existe antes de tentar dividir
+    if (!token || typeof token !== 'string') {
+        return null;
+    }
+
     try {
-        const base64Url = token.split('.')[1];
+        const parts = token.split('.');
+        if (parts.length !== 3) return null; // Estrutura inválida
+
+        const base64Url = parts[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
         return JSON.parse(jsonPayload);
     } catch (e) {
-        console.error("Erro ao decodificar o JWT:", e);
+        // CORREÇÃO DE BUG (Gravidade Baixa): Erro silencioso para não poluir o console
         return null;
     }
 }
@@ -57,13 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.addEventListener("submit", (e) => {
             e.preventDefault();
             
-            const tipoContaLogin = loginForm.querySelector('input[name="tipo_conta"]:checked').value;
-            console.log(`Simulando login como: ${tipoContaLogin}`);
-            
+            // Verifica qual tipo de conta está selecionado apenas para log interno (opcional)
+            // const tipoContaLogin = loginForm.querySelector('input[name="tipo_conta"]:checked').value;
+        
             // Simulação: Salva um token genérico de usuário no localStorage.
             localStorage.setItem("jwtToken", FAKE_JWT_TOKEN_USER); 
             
-            // Garante que dados de usuário existam para a simulação funcionar.
+            // Garante que dados de usuário existam para a simulação funcionar na página de Perfil.
             if (!localStorage.getItem('userData')) {
                 const fakeUserData = {
                     name: "Usuário (Login)",
@@ -106,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const toggleSenha = document.getElementById("toggleSenha");
         const toggleConfirmarSenha = document.getElementById("toggleConfirmarSenha");
         const tipoContaRadios = registerForm.querySelectorAll('input[name="tipo_conta"]');
-        
+
         // Funções de validação pura.
         const reMail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
         const vNome = val => val.trim().length >= 3;
@@ -116,8 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /**
          * Calcula a pontuação de força da senha (0-100).
-         * @param {string} v - O valor da senha.
-         * @returns {number} A pontuação da senha.
          */
         function scoreSenha(v) {
             let pontuacao = 0;
@@ -131,14 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /**
          * Atualiza o estado visual de um campo e sua mensagem de hint.
-         * @param {HTMLElement} campo - O elemento do campo (input, checkbox parent, etc.).
-         * @param {HTMLElement} hintEl - O elemento span para exibir a mensagem.
-         * @param {boolean} valido - Se o campo é válido.
-         * @param {string} msgOK - Mensagem para estado válido.
-         * @param {string} msgERRO - Mensagem para estado inválido.
          */
         function setEstado(campo, hintEl, valido, msgOK, msgERRO) {
-            if (!hintEl) return; 
+            if (!hintEl) return;
             campo.classList.toggle("ok", valido);
             campo.classList.toggle("erro", !valido);
             if(campo.setAttribute) campo.setAttribute("aria-invalid", String(!valido));
@@ -147,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /**
          * Atualiza a barra visual de força da senha.
-         * @param {number} pct - A porcentagem (0-100) de força.
          */
         function setBarra(pct) {
             if (!barraForca) return;
@@ -160,29 +158,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /**
          * Revalida todos os campos do formulário de cadastro de pessoa física.
-         * Atualiza a UI (hints, barra de força) e habilita/desabilita o botão de envio.
-         * @returns {boolean} True se o formulário inteiro for válido, False caso contrário.
          */
         function revalidarRegistro() {
             const nomeValido = vNome(nome.value);
             const emailValido = vMail(email.value);
             const pontuacaoSenha = scoreSenha(senha.value);
             const senhaValida = pontuacaoSenha >= 40; // Requer pontuação mínima
-            const confirmarSenhaValido = vConfirmarSenha(senha.value, confirmarSenha.value) && senhaValida;
+            
+            // Só valida a confirmação se a senha principal já tiver algo digitado
+            const confirmarSenhaValido = senha.value.length > 0 && vConfirmarSenha(senha.value, confirmarSenha.value);
             const termosValidos = vTermos(termos.checked);
 
             setEstado(nome, hintNome, nomeValido, "Nome válido.", "O nome deve ter no mínimo 3 caracteres.");
             setEstado(email, hintEmail, emailValido, "E-mail válido.", "Formato de e-mail inválido.");
             setBarra(pontuacaoSenha);
             setEstado(senha, hintSenha, senhaValida, "Senha forte o suficiente.", "Use 8+ caracteres, maiúsculas, números e símbolos.");
-
-            // Valida confirmação apenas se a senha principal foi digitada.
+            
             if (senha.value.length > 0) {
                 setEstado(confirmarSenha, hintConfirmarSenha, confirmarSenhaValido, "As senhas coincidem.", "As senhas não coincidem.");
             } else {
                 if (hintConfirmarSenha) hintConfirmarSenha.textContent = "";
                 confirmarSenha.classList.remove("ok", "erro");
             }
+            
             setEstado(termos.parentElement, hintTermos, termosValidos, "", "Você deve aceitar os termos.");
 
             const tudoOK = nomeValido && emailValido && senhaValida && confirmarSenhaValido && termosValidos;
@@ -224,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault(); 
             
             if (revalidarRegistro()) {
-                console.log(`Simulando cadastro de PESSOA FÍSICA: ${nome.value}`);
+                // CORREÇÃO: Removido console.log desnecessário para evitar poluição
                 
                 // Salva dados simulados no localStorage.
                 const userData = {
