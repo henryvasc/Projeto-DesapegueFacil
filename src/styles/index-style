@@ -945,3 +945,67 @@ html, body {
   border: 1px solid var(--color-border);
   font-size: var(--font-size-xs);
 }
+/* src/styles/index-style.css */
+
+/* Estilos para o Acordeão da Sidebar */
+.filter-accordion {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0.5rem;
+}
+
+.filter-btn.toggle-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.8rem 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+.filter-btn.toggle-btn .btn-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.filter-btn .arrow {
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+/* Roda a seta quando aberto */
+.filter-btn.active .arrow {
+    transform: rotate(180deg);
+}
+
+.filter-submenu {
+    padding: 0.5rem 0 1rem 2rem; /* Indentação */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    animation: slideDown 0.2s ease-out;
+}
+
+.filter-submenu label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+}
+
+.filter-submenu input[type="checkbox"],
+.filter-submenu input[type="radio"] {
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
