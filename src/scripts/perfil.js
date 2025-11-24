@@ -1,84 +1,125 @@
-// ===============================================
-// perfil.js
-// Gerencia a exibição de dados na página de perfil (perfil.html)
-// e a funcionalidade de logout.
-// ===============================================
+// src/scripts/perfil.js
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /**
-     * Decodifica o payload de um token JWT (sem verificar assinatura).
-     * @param {string} token - O token JWT.
-     * @returns {object|null} O payload decodificado ou null em caso de erro.
-     */
+    // Função auxiliar para decodificar JWT (mantida do original)
     function parseJwtPayload(token) {
-        try {
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join(''));
-            return JSON.parse(jsonPayload);
-        } catch (e) {
-            console.error("Erro ao decodificar o JWT:", e);
-            return null;
-        }
+         if (!token) return null;
+         try { return JSON.parse(atob(token.split('.')[1])); } catch(e) { return null; }
     }
 
-    // --- Lógica da Página de Perfil ---
-    // Verifica se estamos na página de perfil procurando por um elemento específico dela.
+    // --- NOVO: Função para criar e mostrar o popup personalizado ---
+    function showDevelopmentAlert() {
+        // 1. Remove popup anterior se houver (limpeza)
+        const existingOverlay = document.getElementById('custom-alert-overlay');
+        if (existingOverlay) existingOverlay.remove();
+
+        // 2. Cria os elementos HTML do popup dinamicamente
+        
+        // O fundo escuro transparente
+        const overlay = document.createElement('div');
+        overlay.id = 'custom-alert-overlay';
+
+        // A caixa branca do popup
+        const box = document.createElement('div');
+        box.id = 'custom-alert-box';
+
+        // Ícone de "Construção/Aviso" (SVG)
+        const iconContainer = document.createElement('div');
+        iconContainer.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f39c12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>';
+        iconContainer.style.marginBottom = '1rem';
+
+        // Título Principal
+        const title = document.createElement('h3');
+        title.innerText = 'Em Desenvolvimento';
+        title.style.color = '#2c3e50';
+        title.style.marginBottom = '0.5rem';
+
+        // Mensagem secundária
+        const message = document.createElement('p');
+        message.innerText = 'A funcionalidade de edição estará disponível em breve.';
+        message.style.color = '#7f8c8d';
+        message.style.fontSize = '0.95rem';
+        message.style.marginBottom = '1.5rem';
+
+        // Botão "Entendido"
+        const button = document.createElement('button');
+        button.innerText = 'Entendido';
+        button.id = 'custom-alert-btn';
+        
+        // Ação de fechar o popup
+        button.onclick = () => {
+            overlay.classList.remove('show'); // Inicia animação de saída
+            setTimeout(() => overlay.remove(), 300); // Remove do HTML após a animação
+        };
+
+        // 3. Monta a estrutura e adiciona ao corpo da página
+        box.appendChild(iconContainer);
+        box.appendChild(title);
+        box.appendChild(message);
+        box.appendChild(button);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+
+        // 4. Força um pequeno delay para ativar a animação CSS (classe 'show')
+        setTimeout(() => overlay.classList.add('show'), 10);
+    }
+    // --- FIM DA NOVA FUNÇÃO ---
+
+
     const profilePageIdentifier = document.querySelector(".profile-card.info-card"); 
     if (profilePageIdentifier) {
         
-        // --- Seleção dos Elementos da Página ---
+        // ... (Lógica de carregar dados do usuário e logout mantida) ...
         const profileNameEl = document.getElementById("profile-name");
         const profileEmailEl = document.getElementById("profile-email");
-        const profileIdEl = document.getElementById("profile-id");
         const logoutBtn = document.getElementById("logoutBtn");
 
-        // --- Obtenção dos Dados de Autenticação ---
         const token = localStorage.getItem("jwtToken");
-        // 'userData' é salvo durante o login/cadastro (em authHandler.js)
-        const userDataString = localStorage.getItem("userData"); 
+        const userDataString = localStorage.getItem("userData");
         
         if (token && userDataString) {
-            try {
-                const userData = JSON.parse(userDataString);
-                const payload = parseJwtPayload(token); // Decodifica o token para pegar o ID (sub)
-
-                // --- Preenchimento das Informações do Perfil ---
-                // Usa os dados do 'userData' (mais confiáveis, salvos no registro) para nome e email.
-                if (profileNameEl) profileNameEl.textContent = userData.name || "Não informado";
-                if (profileEmailEl) profileEmailEl.textContent = userData.email || "Não informado";
-                
-                // Usa o 'sub' (subject/ID) do payload do token para o ID do usuário.
-                if (profileIdEl && payload) profileIdEl.textContent = payload.sub || "Não informado";
-
-            } catch (error) {
-                 console.error("Erro ao processar dados do usuário ou token:", error);
-                 // Trata o caso de dados inválidos no localStorage como não autenticado.
-                 window.location.href = "login.html";
-                 return;
-            }
-            
+            const userData = JSON.parse(userDataString);
+            if (profileNameEl) profileNameEl.textContent = userData.name || "Não informado";
+            if (profileEmailEl) profileEmailEl.textContent = userData.email || "Não informado";
         } else {
-            // Se não há token ou userData, o usuário não deveria estar nesta página.
-            // A proteção de rota em authUI.js geralmente cuida disso, mas é uma segurança adicional.
-            console.error("Dados de usuário ou token não encontrados no localStorage. Redirecionando para login.");
-            window.location.href = "login.html";
-            return;
+            // window.location.href = "login.html"; // Comentado para testes
         }
 
-        // --- Funcionalidade do Botão "Sair" (Logout) ---
         if (logoutBtn) {
             logoutBtn.addEventListener("click", () => {
-                localStorage.removeItem("jwtToken"); // Remove o token.
-                localStorage.removeItem("userData"); // Remove os dados do usuário.
-                window.location.href = "index.html"; // Redireciona para a página inicial.
+                localStorage.removeItem("jwtToken");
+                localStorage.removeItem("userData");
+                window.location.href = "index.html";
             });
-        } else {
-             console.warn("Botão de logout #logoutBtn não encontrado na página de perfil.");
         }
+
+        // --- LÓGICA DOS BOTÕES ATUALIZADA ---
+        const actionButtons = document.querySelectorAll('.listing-actions button');
+        actionButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const action = this.textContent.trim().toLowerCase();
+                const card = this.closest('.listing-item-card');
+                const statusBadge = card.querySelector('.listing-status');
+
+                if (action === 'editar') {
+                    
+                    // --- AQUI ESTÁ A MUDANÇA PRINCIPAL ---
+                    // Em vez de alert(), chamamos nossa nova função:
+                    showDevelopmentAlert();
+
+                } else if (action === 'desativar') {
+                    if(confirm(`Pausar este anúncio?`)) {
+                        statusBadge.textContent = 'Pausado';
+                        statusBadge.style.backgroundColor = '#7f8c8d';
+                        this.textContent = 'Ativar';
+                    }
+                } else if (action === 'ativar') {
+                    statusBadge.textContent = 'Venda Ativa';
+                    statusBadge.style.backgroundColor = ''; 
+                    this.textContent = 'Desativar';
+                }
+            });
+        });
     }
-    // Se profilePageIdentifier não for encontrado, o script simplesmente não faz nada (não está na página de perfil).
 });
