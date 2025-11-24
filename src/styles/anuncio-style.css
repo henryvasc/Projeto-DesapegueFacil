@@ -77,79 +77,45 @@ img {
   padding: 1rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; /* Centraliza no mobile */
   align-items: center;
   gap: 1rem;
   border-bottom: var(--main-border);
 }
 
 .logo {
-  width: 100%;
+  width: 100%; /* Ocupa toda largura no mobile */
   text-align: center;
 }
 .logo a {
   color: var(--color-text-primary);
-}
-
-.main-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.btn-nav {
-  flex-grow: 0; 
-  text-align: center;
-  padding: 0.6rem 1rem;
-  border-radius: var(--border-radius-sm);
-  cursor: pointer;
+  font-size: var(--font-size-lg);
   font-weight: bold;
-  border: none; 
-  border-bottom: 2px solid transparent; 
-  transition: all 0.2s ease-in-out;
-  background-color: var(--color-white);
-  color: var(--color-text-secondary);
-}   
-
-.btn-nav.active,
-.btn-nav:hover {
-  color: var(--color-primary);
-  border-bottom-color: var(--color-primary); 
-  box-shadow: none; 
-  transform: none; 
 }
 
+/* Esconde navegação principal nesta página, se houver */
+.main-nav {
+    display: none;
+}
 
 .search-and-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Permite quebra de linha */
   gap: 0.5rem;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+  justify-content: center; /* Centraliza botões no mobile */
+  width: 100%; /* Ocupa toda largura no mobile */
 }
 
-.search-and-actions input {
-  font-size: var(--font-size-base);
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: var(--border-radius-sm);
-  min-width: 0;
-  width: 100%;
-}
-
-.search-and-actions input:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-  outline: none;
+/* Remove campo de busca nesta página */
+.search-and-actions input[type="search"] {
+ display: none;
 }
 
 .btn-announce,
 .btn-register,
 .btn-enter {
-  flex-grow: 1; 
+  flex-grow: 1; /* Botões crescem no mobile */
   text-align: center;
   padding: 0.6rem 1rem;
   border-radius: var(--border-radius-sm);
@@ -163,7 +129,7 @@ img {
 .btn-register:hover,
 .btn-enter:hover {
   transform: translateY(-1px); 
-  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.5); 
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2); 
 }
 
 .btn-announce {
@@ -179,12 +145,14 @@ img {
 .btn-enter {
   background-color: var(--color-background);
   color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
 }
 
 /* Ícones de Perfil/Notificação/Chat */
 .btn-profile,
 .btn-icon {
-    display: none; /* Controlado por authUI.js */
+    /* display é controlado por authUI.js */
+    display: flex; 
     align-items: center;
     justify-content: center;
     background-color: var(--color-background);
@@ -194,6 +162,7 @@ img {
     height: 40px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    flex-shrink: 0; /* Impede que encolham */
 }
 .btn-profile:hover,
 .btn-icon:hover {
@@ -225,34 +194,20 @@ img {
 /* =================================== */
 @media (min-width: 768px) {
   .main-header {
-    justify-content: space-between;
+    justify-content: space-between; /* Alinha logo à esquerda, ações à direita */
   }
   .logo {
-    width: auto;
+    width: auto; /* Tamanho automático */
     text-align: left;
   }
-  .main-nav ul {
-    width: auto;
-  }
   .search-and-actions {
-    width: 100%; 
-  }
-  .search-and-actions input {
-    width: auto;
-    flex-grow: 1;
+    width: auto; /* Tamanho automático */
+    justify-content: flex-end; /* Alinha botões à direita */
   }
   .btn-announce,
   .btn-register,
-  .btn-enter,
-  .btn-nav {
-    flex-grow: 0;
-  }
-}
-
-@media (min-width: 960px) {
-  .search-and-actions {
-    width: auto;
-    gap: 1rem;
+  .btn-enter {
+    flex-grow: 0; /* Botões não crescem mais */
   }
 }
 
@@ -261,7 +216,7 @@ img {
 /* =================================== */
 
 .anuncio-container {
-  max-width: 1200px;
+  max-width: 1000px; /* Largura ajustada para o layout da imagem */
   margin: 2rem auto;
   padding: 0 1.5rem;
   flex-grow: 1;
@@ -273,10 +228,20 @@ img {
   gap: 0.5rem;
   font-weight: bold;
   color: var(--color-text-secondary);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Aumenta margem */
+  padding: 0.5rem 1rem; /* Adiciona padding */
+  border: 1px solid var(--color-border); /* Adiciona borda */
+  background-color: var(--color-white); /* Fundo branco */
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
 }
 .btn-voltar:hover {
   color: var(--color-primary);
+  border-color: var(--color-primary);
+  background-color: #f8f8f8;
+}
+.btn-voltar svg {
+    stroke-width: 2.5;
 }
 
 .anuncio-header {
@@ -294,7 +259,7 @@ img {
 
 .anuncio-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* Uma coluna por padrão (mobile) */
   gap: 1.5rem;
 }
 
@@ -311,16 +276,18 @@ img {
 
 .anuncio-card {
   background-color: var(--color-white);
-  padding: 2.5rem;
+  padding: 1.5rem 2rem; /* Ajusta padding */
   border-radius: var(--border-radius-md);
   border: var(--main-border);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Sombra mais sutil */
 }
 
 .anuncio-card h3 {
   font-size: var(--font-size-lg);
   color: var(--color-secondary);
   margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem; /* Linha abaixo do título */
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* Estilos de Formulário */
@@ -333,41 +300,52 @@ img {
 
 .form-group label {
   display: block;
-  font-weight: bold;
+  font-weight: 500; /* Peso da fonte */
   color: var(--color-text-primary);
   margin-bottom: 0.5rem;
+  font-size: var(--font-size-sm); /* Tamanho menor */
 }
 
 .form-group input[type="text"],
 .form-group textarea,
 .form-group select {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.8rem 1rem; /* Padding ajustado */
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-base);
   font-family: var(--font-family-sans);
+  background-color: #f9f9f9; /* Fundo cinza claro */
+  transition: all 0.2s ease;
+}
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    background-color: var(--color-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2); /* Outline no focus */
+    outline: none;
 }
 
 /* Estilo de dica (hint) */
 .form-group .hint {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs); /* Menor */
+    color: var(--color-text-muted); /* Cinza mais claro */
     display: block;
-    margin-top: 4px;
+    margin-top: 5px;
 }
 
 /* Estilo para input readonly (preenchido pela API) */
 .form-group input:read-only {
     background-color: var(--color-background);
-    color: var(--color-text-primary);
+    color: var(--color-text-secondary);
     cursor: not-allowed;
     border-color: var(--color-border);
 }
 
 .form-group textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 100px; /* Altura ajustada */
 }
 
 .form-group select {
@@ -381,36 +359,65 @@ img {
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* Uma coluna por padrão */
   gap: 1.5rem;
 }
 
-/* Tipo de Anúncio Toggles */
-.toggle-group {
+/* Tipo de Anúncio Radio Buttons */
+.radio-group-anuncio {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1.5rem; /* Espaço entre opções */
   margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border); /* Linha abaixo */
+  padding-bottom: 1.5rem;
 }
-.toggle-group input[type="radio"] {
-  display: none;
+.radio-group-anuncio input[type="radio"] {
+  display: none; /* Esconde o radio original */
 }
-.toggle-group .toggle-btn {
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-sm);
-  background: var(--color-white);
-  color: var(--color-text-primary);
+.radio-group-anuncio label {
+  position: relative;
+  padding-left: 28px; /* Espaço para o círculo customizado */
   cursor: pointer;
   font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 0; /* Remove margem padrão */
 }
-.toggle-group input[type="radio"]:checked + .toggle-btn {
-  background: var(--color-secondary);
-  color: var(--color-white);
-  border-color: var(--color-secondary);
+.radio-group-anuncio label::before { /* Círculo externo */
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  transition: border-color 0.2s;
+}
+.radio-group-anuncio label::after { /* Círculo interno (ponto) */
+  content: '';
+  position: absolute;
+  left: 5px; /* Centraliza o ponto */
+  top: 50%;
+  transform: translateY(-50%) scale(0); /* Começa invisível */
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.radio-group-anuncio input[type="radio"]:checked + label {
+  color: var(--color-text-primary); /* Cor do texto selecionado */
+}
+.radio-group-anuncio input[type="radio"]:checked + label::before {
+  border-color: var(--color-primary); /* Cor da borda selecionada */
+}
+.radio-group-anuncio input[type="radio"]:checked + label::after {
+  transform: translateY(-50%) scale(1); /* Mostra o ponto */
 }
 
-/* Input de Preço */
+
+/* Input de Preço com Ícone e Botão */
 .input-with-icon {
   position: relative;
   display: flex;
@@ -418,19 +425,46 @@ img {
 }
 .input-with-icon span {
   position: absolute;
-  left: 0.8rem;
+  left: 1rem; /* Ajusta posição do R$ */
   color: var(--color-text-muted);
   font-size: var(--font-size-base);
+  font-weight: 500;
 }
 .input-with-icon input {
-  padding-left: 3rem; 
+  padding-left: 3.5rem; /* Mais espaço para R$ */
+  padding-right: 3.5rem; /* Espaço para o botão */
 }
+.btn-negociar {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.2s ease;
+}
+.btn-negociar svg {
+    display: block; /* Remove espaço extra abaixo do SVG */
+}
+.btn-negociar:hover {
+    color: var(--color-primary);
+    background-color: var(--color-background);
+}
+.btn-negociar.active { /* Estilo do botão ativo */
+     color: var(--color-primary);
+     background-color: #eaf5fd;
+}
+
 
 /* Dropzone de Fotos */
 .foto-dropzone {
   border: 2px dashed var(--color-border);
   border-radius: var(--border-radius-md);
-  padding: 2rem;
+  padding: 2rem 1rem; /* Padding ajustado */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -438,36 +472,56 @@ img {
   text-align: center;
   cursor: pointer;
   transition: background-color 0.2s;
+  background-color: #fdfdfd; /* Fundo levemente diferente */
+  min-height: 150px; /* Altura mínima */
 }
 .foto-dropzone:hover {
-  background-color: #fcfcfc;
+  background-color: #f5faff;
   border-color: var(--color-primary);
 }
 .foto-dropzone svg {
   stroke: var(--color-primary);
+  margin-bottom: 0.5rem; /* Espaço abaixo do ícone */
 }
 .foto-dropzone span {
-  font-weight: bold;
+  font-weight: 500; /* Peso da fonte */
   color: var(--color-primary);
-  margin-top: 1rem;
+  font-size: var(--font-size-sm);
 }
 .foto-dropzone small {
-  color: var(--color-text-light);
+  color: var(--color-text-muted); /* Cinza mais claro */
+  font-size: var(--font-size-xs); /* Menor */
   margin-top: 0.25rem;
 }
 
 /* Card de Dicas */
+.tips-card {
+    background-color: #fdfdfd; /* Fundo diferente */
+}
 .tips-card h3 {
   margin-bottom: 1rem;
+  border: none; /* Remove linha */
+  padding-bottom: 0;
 }
 .tips-card ul {
-  list-style: disc;
-  padding-left: 1.25rem;
+  list-style: none; /* Remove bolinhas padrão */
+  padding-left: 0;
 }
 .tips-card li {
   margin-bottom: 0.75rem;
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
+  position: relative;
+  padding-left: 1.25rem; /* Espaço para o ícone */
+}
+.tips-card li::before { /* Adiciona um marcador (ex: check) */
+    content: '•'; /* Ou use um SVG como background-image */
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.2em; /* Tamanho do marcador */
+    line-height: 1; /* Alinhamento vertical */
 }
 .tips-card li:last-child {
   margin-bottom: 0;
@@ -479,6 +533,7 @@ img {
   flex-wrap: wrap;
   justify-content: flex-end; /* Alinha botões à direita */
   gap: 1rem;
+  margin-top: 1rem; /* Adiciona espaço acima */
 }
 
 .btn-submit,
@@ -521,11 +576,77 @@ img {
 /* =================================== */
 @media (min-width: 768px) {
   .anuncio-grid {
-    grid-template-columns: 2fr 1fr; /* Coluna principal 2x maior que a sidebar */
+    grid-template-columns: 2fr 1fr; /* Layout de 2 colunas */
     gap: 2rem;
   }
   
   .form-row {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Campos lado a lado */
   }
+}
+/* =================================== */
+/* Correção de Input com Ícone (Preço) */
+/* =================================== */
+
+.input-with-icon {
+  position: relative;
+  display: block; /* Garante que o container ocupe a linha corretamente */
+  width: 100%;
+}
+
+/* Aumentamos a especificidade para garantir que este padding vença o estilo genérico */
+.form-group .input-with-icon input,
+.input-with-icon input[type="text"] {
+  padding-left: 3rem !important;  /* Espaço para o "R$" na esquerda */
+  padding-right: 3rem !important; /* Espaço para o botão na direita */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Posicionamento do símbolo "R$" */
+.input-with-icon span {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  color: var(--color-text-muted);
+  font-weight: bold;
+  pointer-events: none; /* Permite clicar "através" do símbolo */
+  z-index: 10;
+}
+
+/* Posicionamento do Botão de Negociar (Ícone da direita) */
+.btn-negociar {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  
+  width: 2.2rem;
+  height: 2.2rem;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  background-color: #eaf5fd; /* Fundo azul claro */
+  color: var(--color-primary);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.btn-negociar:hover {
+  background-color: #d0e9fc;
+}
+
+.btn-negociar.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-negociar svg {
+  width: 18px;
+  height: 18px;
 }
