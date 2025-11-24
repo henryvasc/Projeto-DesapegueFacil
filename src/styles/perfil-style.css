@@ -107,10 +107,11 @@ img {
   border-bottom: 2px solid var(--color-primary);
 }
 
+/* Container dos botões de ação no Header */
 .search-and-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem; /* Espaçamento uniforme */
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -131,42 +132,77 @@ img {
   outline: none;
 }
 
-
-
-.btn-announce,
-.btn-register,
-.btn-enter {
+/* Botão Principal (+ Anunciar) */
+.btn-announce {
   flex-grow: 1;
   text-align: center;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: var(--border-radius-sm);
   cursor: pointer;
   font-weight: bold;
   border: none;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.btn-announce:hover,
-.btn-register:hover,
-.btn-enter:hover {
-  transform: translateY(-1px); 
-  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.5); 
-}
-
-.btn-announce {
   background-color: var(--color-primary);
   color: var(--color-white);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* Altura fixa para alinhar com os ícones */
 }
 
-.btn-register {
-  background-color: var(--color-secondary);
-  color: var(--color-white);
+.btn-announce:hover {
+  transform: translateY(-1px); 
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+  background-color: #2980b9;
+  color: var(--color-white); /* Garante texto branco no hover */
 }
 
-.btn-enter {
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
+/* --- CORREÇÃO DO DESIGN DOS BOTÕES DE ÍCONE --- */
+
+.btn-icon,
+.btn-profile {
+    display: flex; /* Flex para centralizar o ícone SVG */
+    align-items: center;
+    justify-content: center;
+    width: 40px;  /* Largura fixa */
+    height: 40px; /* Altura fixa igual ao botão anunciar */
+    background-color: #f4f6f8; /* Fundo cinza claro sutil */
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none; /* Remove sublinhado se for link */
+    box-sizing: border-box;
 }
+
+/* Botões Chat e Notificação (Quadrados arredondados) */
+.btn-icon {
+    border-radius: var(--border-radius-sm); 
+}
+
+/* Botão Perfil (Redondo) */
+.btn-profile {
+    border-radius: 50%; 
+}
+
+/* Efeito Hover Unificado */
+.btn-icon:hover,
+.btn-profile:hover {
+    background-color: #eaf5fd; /* Fundo azul claro */
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+}
+
+/* Tamanho dos Ícones SVG */
+.btn-icon svg,
+.btn-profile svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+/* --- FIM DA CORREÇÃO --- */
 
 .main-footer {
   text-align: center;
@@ -194,7 +230,7 @@ img {
   }
 
   .search-and-actions {
-    width: 50%;
+    width: auto; /* Deixa o container ocupar apenas o necessário */
   }
 
   .search-and-actions input {
@@ -202,9 +238,7 @@ img {
     flex-grow: 1;
   }
 
-  .btn-announce,
-  .btn-register,
-  .bnt-enter {
+  .btn-announce {
     flex-grow: 0;
   }
 }
@@ -239,30 +273,8 @@ img {
   padding: 2rem 1rem;
 }
 
-.login-card {
-  background-color: var(--color-white);
-  padding: 2.5rem;
-  border-radius: var(--border-radius-md);
-  border: var(--main-border);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  max-width: 450px;
-  text-align: center;
-}
-
-.login-card h2 {
-  font-size: var(--font-size-xl);
-  color: var(--color-secondary);
-  margin-bottom: 0.5rem;
-}
-
-.login-card p {
-  color: var(--color-text-secondary);
-  margin-bottom: 2rem;
-}
-
 /* =================================== */
-/* 9. Estilos dos Botões de Ação
+/* 9. Estilos dos Botões de Ação (Logout)
 /* =================================== */
 
 .btn-logout {
@@ -279,37 +291,12 @@ img {
     background-color: var(--color-danger);
     color: var(--color-white);
     font-size: var(--font-size-base);
-    width: 100%; /* Garante que ocupe o espaço no card */
+    width: 100%; 
 }
 
 .btn-logout:hover {
     transform: translateY(-1px); 
     box-shadow: 0 4px 12px rgba(44, 62, 80, 0.5); 
-}
-
-/* Estilo do Botão de Perfil (Ícone) */
-.btn-profile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-background);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
-    border-radius: 50%; /* Torna o botão redondo */
-    width: 40px;  /* Largura fixa */
-    height: 40px; /* Altura fixa */
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-}
-
-.btn-profile:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-}
-
-.btn-profile svg {
-    width: 20px;
-    height: 20px;
 }
 
 /* =================================== */
@@ -318,10 +305,10 @@ img {
 
 /* Container principal da página de perfil */
 .profile-container {
-  display: flex; /* Organiza os cards */
-  flex-direction: column; /* Um card abaixo do outro */
-  align-items: center; /* Centraliza os cards */
-  gap: 2rem; /* Espaço entre os cards */
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 2rem; 
   flex-grow: 1;
   padding: 2rem 1rem;
 }
@@ -334,13 +321,13 @@ img {
   border: var(--main-border);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   width: 100%;
-  max-width: 700px; /* Largura um pouco maior para acomodar listas */
+  max-width: 700px; 
 }
 
 /* Card de Informações */
 .info-card {
-   text-align: center; /* Centraliza título e botão logout */
-   max-width: 500px; /* Mantém card de info mais estreito */
+   text-align: center; 
+   max-width: 500px; 
 }
 .info-card h2 {
   font-size: var(--font-size-xl);
@@ -352,7 +339,7 @@ img {
   margin-bottom: 2rem;
 }
 
-.profile-info { /* Caixa com os dados */
+.profile-info { 
     text-align: left;
     margin-bottom: 2rem;
     border: 1px solid var(--color-border);
@@ -377,8 +364,8 @@ img {
     word-break: break-all;
 }
 
-.btn-logout { /* Botão Sair */
-    padding: 0.8rem 1.5rem; /* Ajuste padding */
+.btn-logout { 
+    padding: 0.8rem 1.5rem; 
     border-radius: var(--border-radius-sm);
     cursor: pointer;
     font-weight: bold;
@@ -387,7 +374,7 @@ img {
     background-color: var(--color-danger);
     color: var(--color-white);
     font-size: var(--font-size-base);
-    display: inline-block; /* Não ocupa largura total */
+    display: inline-block; 
     width: auto;
 }
 .btn-logout:hover {
@@ -415,8 +402,8 @@ img {
 }
 .activity-item {
     display: flex;
-    flex-wrap: wrap; /* Permite quebra em telas menores */
-    gap: 0.5rem 1rem; /* Espaço vertical e horizontal */
+    flex-wrap: wrap; 
+    gap: 0.5rem 1rem; 
     padding: 0.75rem 1rem;
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-sm);
@@ -437,7 +424,7 @@ img {
 .activity-desc {
     font-weight: 500;
     color: var(--color-text-primary);
-    flex-grow: 1; /* Ocupa espaço */
+    flex-grow: 1; 
 }
 .activity-recipient {
     color: var(--color-text-light);
@@ -445,7 +432,7 @@ img {
 .activity-status {
     font-style: italic;
     color: var(--color-text-secondary);
-    margin-left: auto; /* Alinha à direita */
+    margin-left: auto; 
     flex-shrink: 0;
 }
 
@@ -455,14 +442,14 @@ img {
     color: var(--color-text-muted);
     font-style: italic;
     margin-top: 1rem;
-    font-size: var(--font-size-sm) !important; /* Sobrescreve margem */
+    font-size: var(--font-size-sm) !important; 
 }
 
 
 /* --- Estilos para Seção de Anúncios --- */
 .listings-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Grid responsivo */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
     gap: 1rem;
 }
 
@@ -475,7 +462,7 @@ img {
 }
 .listing-item-card img {
     width: 100%;
-    height: 120px; /* Altura fixa para imagem */
+    height: 120px; 
     object-fit: cover;
 }
 .listing-info {
@@ -499,7 +486,7 @@ img {
     display: flex;
     gap: 0.5rem;
     padding: 0 0.75rem 0.75rem 0.75rem;
-    margin-top: auto; /* Empurra para baixo */
+    margin-top: auto; 
 }
 .listing-actions button {
     flex-grow: 1;
@@ -520,10 +507,72 @@ img {
 /* Ajustes responsivos */
 @media (min-width: 768px) {
     .btn-logout {
-        flex-grow: 0; /* Impede que o botão estique no desktop */
+        flex-grow: 0; 
     }
-    
-    .btn-profile {
-        margin-left: 0.5rem;
-    }
+}
+/* =================================== */
+/* Estilos do Pop-up Personalizado (Novo)
+/* =================================== */
+
+/* O fundo escuro que cobre a tela inteira */
+#custom-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Preto com 50% de transparência */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    z-index: 9999; /* Garante que fique por cima de tudo */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Classe adicionada via JS para mostrar o popup com animação */
+#custom-alert-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* A caixa branca do popup */
+#custom-alert-box {
+    background-color: var(--color-white, #fff);
+    padding: 2rem;
+    border-radius: 12px; /* Bordas bem arredondadas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(20px); /* Começa um pouco mais para baixo */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito de "pulo" suave */
+}
+
+/* Anima a caixa subindo quando o overlay aparece */
+#custom-alert-overlay.show #custom-alert-box {
+    transform: translateY(0);
+}
+
+/* O botão "Entendido" dentro do popup */
+#custom-alert-btn {
+    background-color: var(--color-primary, #3498db);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px; /* Botão estilo pílula */
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#custom-alert-btn:hover {
+    background-color: #2980b9; /* Cor um pouco mais escura no hover */
+    transform: translateY(-2px);
+}
+
+#custom-alert-btn:active {
+    transform: translateY(0);
 }
