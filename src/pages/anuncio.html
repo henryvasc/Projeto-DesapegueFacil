@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Anúncio - DesapegueFácil</title>
+    
     <link rel="stylesheet" href="anuncio-style.css">
+    <link rel="stylesheet" href="register-ong-style.css">
 </head>
 <body>
 
@@ -13,31 +15,172 @@
             <h1><a href="index.html">DesapegueFácil</a></h1>
         </div>
         <div class="search-and-actions">
-            
-            <a href="anuncio.html" class="btn-announce" id="announceBtn">+ Anunciar</a> 
-            
-            <a href="chat.html" class="btn-icon" id="chatBtn" style="display: flex;">
+            <a href="anuncio.html" class="btn-announce" id="announceBtn">+ Anunciar</a>
+            <a href="chat.html" class="btn-icon" id="chatBtn" style="display: none;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
             </a>
-            <button class="btn-icon" id="notifyBtn" style="display: flex;">
+            <button class="btn-icon" id="notifyBtn" style="display: none;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
             </button>
-            <a href="perfil.html" class="btn-profile" id="profileBtn" style="display: flex;">
+            <a href="perfil.html" class="btn-profile" id="profileBtn" style="display: none;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </a>
+            <a href="login.html" class="btn-enter" id="loginBtn" style="display: none;">Entrar</a>
+            <a href="register.html" class="btn-register" id="registerBtn" style="display: none;">Cadastrar</a>
         </div>
     </header>
 
     <main class="anuncio-container">
-        
+
         <a href="index.html" class="btn-voltar">
-            </a>
-        
+             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Voltar</span>
+        </a>
+
         <div class="anuncio-header">
+            <h2>Criar Anúncio</h2>
+            <p>Preencha as informações do seu produto.</p>
+        </div>
+
+        <form class="anuncio-grid" action="#" id="anuncioForm">
+            
+            <div class="form-col-main">
+
+                <section class="anuncio-card">
+                    <h3>Informações Básicas</h3>
+                    <div class="form-group">
+                        <label for="titulo">Título do Anúncio*</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Ex: iPhone 13 Pro Max 256GB - Seminovo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição*</label>
+                        <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva seu produto com detalhes..." required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="categoria">Categoria*</label>
+                            <select id="categoria" name="categoria" required>
+                                <option value="" disabled selected>Selecione uma categoria</option>
+                                <option value="eletronicos">Eletrônicos</option>
+                                <option value="veiculos">Veículos</option>
+                                <option value="casa">Casa e Jardim</option>
+                                <option value="moda">Moda e Beleza</option>
+                                <option value="infantil">Infantil</option>
+                                <option value="esporte">Esporte e Lazer</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="condicao">Condição*</label>
+                            <select id="condicao" name="condicao" required>
+                                <option value="" disabled selected>Selecione a condição</option>
+                                <option value="novo">Novo</option>
+                                <option value="seminovo">Seminovo</option>
+                                <option value="usado">Usado</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="anuncio-card">
+                     <h3>Tipo de Anúncio</h3>
+                     <div class="form-group">
+                        <div class="radio-group-anuncio toggle-group">
+                             <input type="radio" name="tipo_anuncio" id="tipo-venda" value="venda" checked>
+                             <label for="tipo-venda" class="toggle-btn">Venda</label>
+
+                             <input type="radio" name="tipo_anuncio" id="tipo-troca" value="troca">
+                             <label for="tipo-troca" class="toggle-btn">Troca</label>
+
+                             <input type="radio" name="tipo_anuncio" id="tipo-doacao" value="doacao">
+                             <label for="tipo-doacao" class="toggle-btn">Desapego</label> 
+                        </div>
+                    </div>
+                     <div class="form-group" id="precoGroup">
+                        <label for="preco">Preço (R$)*</label>
+                        <div class="input-with-icon">
+                             <span>R$</span>
+                             <input type="text" id="preco" name="preco" placeholder="0,00" inputmode="numeric" required>
+                             
+                             <button type="button" class="btn-negociar" id="btnNegociar" title="Marcar como preço negociável">
+                                 <span>N</span>
+                             </button>
+                        </div>
+                    </div>
+                </section>
+
             </div>
 
-        <form class="anuncio-grid" action="#">
-            </form>
+            <div class="form-col-sidebar">
+
+                <section class="anuncio-card">
+                    <h3>Fotos (0/5)</h3>
+                     <div class="form-group">
+                        <div class="foto-dropzone" id="fotoDropzone">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <span>Adicionar Foto</span>
+                            <small>Máximo 5 fotos</small>
+                            <input type="file" id="fotos" name="fotos[]" multiple accept="image/*" style="display: none;">
+                        </div>
+                        <div id="fotoPreviewContainer" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+                    </div>
+                </section>
+
+                <section class="anuncio-card">
+                    <h3>Localização</h3>
+                    <div class="form-group">
+                        <label for="cep">CEP*</label>
+                        <input type="text" id="cep" name="cep" placeholder="00000-000" inputmode="numeric" maxlength="9" required>
+                        <span class="hint" id="hint-cep">Digite o CEP para buscar o endereço.</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="endereco">Endereço*</label>
+                        <input type="text" id="endereco" name="endereco" placeholder="Rua, Avenida..." required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="numero">Número*</label>
+                            <input type="text" id="numero" name="numero" placeholder="Ex: 123" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" id="complemento" name="complemento" placeholder="Apto, Bloco...">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="bairro">Bairro*</label>
+                        <input type="text" id="bairro" name="bairro" placeholder="Seu bairro" required>
+                    </div>
+                    <div class="form-row">
+                         <div class="form-group">
+                            <label for="cidade">Cidade*</label>
+                            <input type="text" id="cidade" name="cidade" placeholder="Sua cidade" readonly required>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado*</label>
+                            <input type="text" id="estado" name="estado" placeholder="UF" maxlength="2" readonly required>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="anuncio-card tips-card">
+                    <h3>Dicas para um bom anúncio</h3>
+                    <ul>
+                        <li>Use fotos claras e bem iluminadas.</li>
+                        <li>Descreva detalhes importantes.</li>
+                        <li>Seja honesto sobre a condição.</li>
+                        <li>Responda rapidamente às mensagens.</li>
+                    </ul>
+                </section>
+
+                <div class="anuncio-actions"> 
+                     <button type="button" class="btn-secondary" onclick="window.location.href='index.html'">Cancelar</button>
+                     <button type="submit" class="btn-submit">Publicar Anúncio</button>
+                </div>
+
+            </div>
+        </form>
 
     </main>
 
@@ -47,5 +190,7 @@
 
     <script src="authUI.js" defer></script>
     <script src="viacep.js" defer></script>
+    <script src="anuncio.js" defer></script>
+
 </body>
 </html>
