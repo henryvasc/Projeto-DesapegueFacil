@@ -49,8 +49,35 @@ O **DesapegueFácil** é uma plataforma de marketplace focada na economia circul
 - **Upload de Documentos:** Interface para envio de comprovativos e fotos da instituição.
 
 ### 💬 Comunicação
-- **Chat (`chat.html`):** Interface apenas visual.
+- **Chat (`chat.html`):** Interface de chat apenas visual.
 - **Feedback Visual:** Sistema global de alertas e pop-ups (`authUI.js`) para funcionalidades em desenvolvimento.
+
+---
+
+## 🗓 Histórico de Desenvolvimento e Sprints
+
+Este projeto foi desenvolvido em três sprints principais, com entregas progressivas que evoluíram do protótipo inicial até o sistema completo.
+
+### 📅 **Linha do Tempo Detalhada**
+
+| Data | Descrição |
+|------|------------|
+| **18/08/2025** | 🧩 1ª Sprint – Entrega do protótipo inicial. |
+| **24/09/2025** | 💻 2ª Sprint – Entrega da estrutura base (`index.html`, `index-style.css`). |
+| **30/09/2025** | Estrutura inicial do projeto criada (organização de diretórios e arquivos principais). |
+| **05/10/2025** | Adição de `authHandler.js` e `authUI.js` com simulação de login local. |
+| **10/10/2025** | Implementação do `filter.js` com filtragem por categoria e tipo. |
+| **14/10/2025** | Adição do wizard de cadastro de ONGs (`register-ong.html` + `register-ong-wizard.js`). |
+| **18/10/2025** | Integração com API ViaCEP (`viacep-ong.js`). |
+| **21/10/2025** | Criação do fluxo de doação (`donate.html` + `donate-wizard.js`). |
+| **24/10/2025** | Revisão visual completa do layout principal (`index-style.css` reorganizado e otimizado). |
+| **26/10/2025** | Adição da interface de chat (`chat.html` + `chat-style.css`). |
+| **27/10/2025** | Correção de responsividade entre **960px e 1180px**. |
+| **28/10/2025** | 🚀 3ª Sprint – Penultima Entrega e Integração Quase Completa |
+| **20/11/2025** | Correção e adição dos pop-ups de aviso de desenvolvimento de funcionalidades |
+| **23/11/2025** | Integração com API BrasilAPI (`authUI.js`).
+| **24/11/2025** | 💻 4ª Sprint – Ultima Entrega e Integração  Completa |
+| **03/12/2025** | 💻 – Entrega MVP final e apresentação |
 
 ---
 
@@ -59,7 +86,7 @@ O **DesapegueFácil** é uma plataforma de marketplace focada na economia circul
 Este projeto foi desenvolvido utilizando tecnologias Web Standard (Vanilla), sem dependência de frameworks pesados, garantindo performance e compatibilidade.
 
 * **HTML5** (Semântico e Acessível)
-* **CSS** (Variáveis CSS, Flexbox, Grid Layout e Design Responsivo)
+* **CSS3** (Variáveis CSS, Flexbox, Grid Layout e Design Responsivo)
 * **JavaScript** (Módulos, Async/Await, Manipulação de DOM)
 * **APIs Externas:**
     * [ViaCEP](https://viacep.com.br/): Para autocompletar endereços através do CEP.
