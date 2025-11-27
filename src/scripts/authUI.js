@@ -94,6 +94,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Aplica o pop-up aos botões de "Doar Agora" (classe .btn-donate) [NOVO]
+    const donateButtons = document.querySelectorAll('.btn-donate');
+    donateButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault(); // Impede o redirecionamento padrão
+            window.showDevelopmentAlert('Doação', 'O fluxo de doações estará disponível em breve.');
+        });
+    });
+
     // Lógica de Autenticação
     if (token) {
         // --- USUÁRIO LOGADO ---
