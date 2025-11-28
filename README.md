@@ -15,10 +15,10 @@ O **DesapegueFácil** é uma plataforma de marketplace focada na economia circul
 | Nome | RA | Função |
 |------|----|---------|
 | **Enzo Bittencourt Massarelli** | 25009182 | Front-end/testes |
-| **Henry Coura Antunes de Vasconcellos** | 25002702 | Front-end |
-| **Felipe Staut** | 25000741 | Design |
-| **Thomaz Soares Masutti** | 25003246 | Design / Documentação |
-| **Arthur Santos Pereira** | 25001490 | Documentação/testes |
+| **Henry Coura Antunes de Vasconcellos** | 25002702 |  Desenvolvedor Front-End/Testes com documentação imediata |
+| **Felipe Staut** | 25000741 | Desing, acessibilidade e testes |
+| **Thomaz Soares Masutti** | 25003246 | Design e Documentação|
+| **Arthur Santos Pereira** | 25001490 | Testes e Validação |
 
 ---
 
