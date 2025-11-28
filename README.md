@@ -6,7 +6,7 @@ O **DesapegueFácil** é uma plataforma de marketplace focada na economia circul
 
 ## 🎨 Protótipo e Design
 
-🔗 [Acessar o protótipo completo no Figma](https://www.figma.com/make/FDE1V2hPRp0vSg6WVeEJS6/Marketplace-de-Troca-de-Produtos-e-Doações?node-id=0-7&t=eVI47M9O4BC4jYGN-1)
+🔗 [Acessar o protótipo completo no Figma]([https://www.figma.com/make/FDE1V2hPRp0vSg6WVeEJS6/Marketplace-de-Troca-de-Produtos-e-Doações?node-id=0-7&t=eVI47M9O4BC4jYGN-1](https://www.figma.com/make/FDE1V2hPRp0vSg6WVeEJS6/Marketplace-de-Troca-de-Produtos-e-Doa%C3%A7%C3%B5es?node-id=0-1&p=f&fullscreen=1))
 
 ---
 
