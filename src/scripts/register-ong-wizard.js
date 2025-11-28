@@ -1,6 +1,5 @@
 // ===============================================
 // register-ong-wizard.js
-// Lógica completa: Wizard, Máscaras, APIs (CEP/CNPJ) e Uploads.
 // ===============================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // ============================================================
-    // 1. MÁSCARAS E VALIDAÇÕES (Telefone e CNPJ)
+    // MÁSCARAS E VALIDAÇÕES (Telefone e CNPJ)
     // ============================================================
 
     // Função auxiliar para aplicar máscara de telefone
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .substring(0, 18);
     };
 
-    // Validar algoritmo do CNPJ (Matemático)
+    // Validar algoritmo do CNPJ
     const validarCNPJ = (cnpj) => {
         cnpj = cnpj.replace(/[^\d]+/g, '');
         if (cnpj === '' || cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) return false;
@@ -105,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cnpjInput.addEventListener('blur', async () => {
             const rawCnpj = cnpjInput.value.replace(/\D/g, '');
             const hintCnpj = document.getElementById('hint-cnpj');
-            const nomeOrgInput = document.getElementById('nome-org'); // Tenta preencher nome
+            const nomeOrgInput = document.getElementById('nome-org'); 
             const emailOrgInput = document.getElementById('email-org');
             const cepInput = document.getElementById('cep');
 
@@ -124,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 try {
-                    // Usando BrasilAPI (Gratuita e sem chave, boa para front-end puro)
+                    // Usando BrasilAPI 
                     const response = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${rawCnpj}`);
                     
                     if (!response.ok) throw new Error('CNPJ não encontrado na base.');
@@ -133,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Sucesso: Preenche campos
                     if (nomeOrgInput) nomeOrgInput.value = data.razao_social || data.nome_fantasia;
-                    // Opcional: preencher outros campos se estiverem vazios
                     if (emailOrgInput && !emailOrgInput.value && data.email) emailOrgInput.value = data.email;
                     
                     // Se o usuário ainda não preencheu o CEP, sugere o do CNPJ
@@ -160,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ============================================================
-    // 2. API DE CEP (ViaCEP)
+    // API DE CEP (ViaCEP)
     // ============================================================
     const cepInput = document.getElementById('cep');
     const cidadeInput = document.getElementById('cidade');
@@ -217,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================================
-    // 3. UPLOAD DE ARQUIVOS (Fotos e Documentos)
+    // UPLOAD DE ARQUIVOS (Fotos e Documentos)
     // ============================================================
     
     // Função genérica para tratar uploads
@@ -297,10 +295,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Configura Doc Upload (Passo 4)
+    
     setupFileUpload('doc-dropzone', 'docs-upload', 'doc-preview-container', 1, false);
 
-    // Configura Foto Upload (Passo 5)
+    
     setupFileUpload('foto-dropzone-ong', 'fotos-org', 'foto-preview-container', 5, true);
 
 
@@ -389,3 +387,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializa
     showStep(currentStep);
 });
+
