@@ -1,578 +1,237 @@
-/* =================================== */
-/* 1. Variáveis Globais (Root)
-/* =================================== */
-:root {
-  --color-primary: #3498db;
-  --color-secondary: #2c3e50;
-  --color-text-primary: #333;
-  --color-text-secondary: #555;
-  --color-text-light: #777;
-  --color-text-muted: #999;
-  --color-background: #f4f4f9;
-  --color-white: #ffffff;
-  --color-border: #e0e0e0;
-  --color-success: #2ecc71;
-  --color-danger: #e74c3c;
-  --font-family-sans: Arial, sans-serif;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.2rem;
-  --font-size-xl: 1.5rem;
-  --font-size-sm: 0.9rem;
-  --font-size-xs: 0.8rem;
-  --border-radius-md: 8px;
-  --border-radius-sm: 5px;
-  --main-border: 1px solid var(--color-border);
-  
-  /* Cores de Validação */
-  --cor-fundo-sucesso: #ecffef;
-  --cor-fundo-erro: #ffecec;
-  --cor-fundo-meter: #eee;
-  --cor-senha-fraca: #f66;
-  --cor-senha-media: #fc3;
-}
+// 
 
-/* =================================== */
-/* 2. Reset e Estilos Globais
-/* =================================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: var(--font-family-sans);
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: var(--color-text-secondary);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-:focus {
-  outline: 3px solid rgba(52, 152, 219, 0.4);
-  outline-offset: 2px;
-}
-
-/* =================================== */
-/* 4. Componentes Comuns (Header/Footer)
-/* =================================== */
-.main-header {
-  background-color: var(--color-white);
-  padding: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  border-bottom: var(--main-border);
-}
-
-.logo {
-  width: 100%;
-  text-align: center;
-}
-
-.main-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-}
-
-.main-nav a {
-  font-weight: bold;
-  padding-bottom: 5px;
-}
-
-.main-nav a.active,
-.main-nav a:hover {
-  color: var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
-}
-
-/* Container dos botões de ação no Header */
-.search-and-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem; /* Espaçamento uniforme */
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.search-and-actions input {
-  font-size: var(--font-size-base);
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: var(--border-radius-sm);
-  min-width: 0;
-  width: 100%;
-}
-
-.search-and-actions input:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-  outline: none;
-}
-
-/* Botão Principal (+ Anunciar) */
-.btn-announce {
-  flex-grow: 1;
-  text-align: center;
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--border-radius-sm);
-  cursor: pointer;
-  font-weight: bold;
-  border: none;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px; /* Altura fixa para alinhar com os ícones */
-}
-
-.btn-announce:hover {
-  transform: translateY(-1px); 
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
-  background-color: #2980b9;
-  color: var(--color-white); /* Garante texto branco no hover */
-}
-
-/* --- CORREÇÃO DO DESIGN DOS BOTÕES DE ÍCONE --- */
-
-.btn-icon,
-.btn-profile {
-    display: flex; /* Flex para centralizar o ícone SVG */
-    align-items: center;
-    justify-content: center;
-    width: 40px;  /* Largura fixa */
-    height: 40px; /* Altura fixa igual ao botão anunciar */
-    background-color: #f4f6f8; /* Fundo cinza claro sutil */
-    color: var(--color-text-secondary);
-    border: 1px solid var(--color-border);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    text-decoration: none; /* Remove sublinhado se for link */
-    box-sizing: border-box;
-}
-
-/* Botões Chat e Notificação (Quadrados arredondados) */
-.btn-icon {
-    border-radius: var(--border-radius-sm); 
-}
-
-/* Botão Perfil (Redondo) */
-.btn-profile {
-    border-radius: 50%; 
-}
-
-/* Efeito Hover Unificado */
-.btn-icon:hover,
-.btn-profile:hover {
-    background-color: #eaf5fd; /* Fundo azul claro */
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    transform: translateY(-1px);
-}
-
-/* Tamanho dos Ícones SVG */
-.btn-icon svg,
-.btn-profile svg {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2;
-}
-
-/* --- FIM DA CORREÇÃO --- */
-
-.main-footer {
-  text-align: center;
-  padding: 1.5rem;
-  background-color: var(--color-secondary);
-  color: var(--color-white);
-  margin-top: 2rem;
-}
-
-/* =================================== */
-/* 5. Responsividade (Tablet)
-/* =================================== */
-@media (min-width: 768px) {
-  .main-header {
-    justify-content: space-between;
-  }
-
-  .logo {
-    width: auto;
-    text-align: left;
-  }
-
-  .main-nav ul {
-    width: auto;
-  }
-
-  .search-and-actions {
-    width: auto; /* Deixa o container ocupar apenas o necessário */
-  }
-
-  .search-and-actions input {
-    width: auto;
-    flex-grow: 1;
-  }
-
-  .btn-announce {
-    flex-grow: 0;
-  }
-}
-
-/* =================================== */
-/* 6. Responsividade (Desktop)
-/* =================================== */
-@media (min-width: 960px) {
-  .main-header {
-    flex-wrap: nowrap;
-    padding: 1rem 2rem;
-  }
-
-  .search-and-actions {
-    width: auto;
-    gap: 1rem;
-  }
-
-  .search-and-actions input {
-    min-width: 250px;
-  }
-}
-
-/* =================================== */
-/* 7. Estilos Base (Layout do Card)
-/* =================================== */
-
-.login-container {
-  display: grid;
-  place-items: center; 
-  flex-grow: 1; 
-  padding: 2rem 1rem;
-}
-
-/* =================================== */
-/* 9. Estilos dos Botões de Ação (Logout)
-/* =================================== */
-
-.btn-logout {
-    flex-grow: 1;
-    text-align: center;
-    padding: 0.8rem;
-    border-radius: var(--border-radius-sm);
-    cursor: pointer;
-    font-weight: bold;
-    border: none;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Elementos DOM ---
+    const searchInput = document.getElementById('search-input');
+    const navButtons = document.querySelectorAll('.main-nav .btn-nav');
+    const categoryButtons = document.querySelectorAll('.categories .category-btn');
     
-    /* Estilo específico de "perigo" (logout) */
-    background-color: var(--color-danger);
-    color: var(--color-white);
-    font-size: var(--font-size-base);
-    width: 100%; 
-}
+    // Elementos da Sidebar
+    const toggleBtns = document.querySelectorAll('.toggle-btn');
+    const filterInputs = document.querySelectorAll('.filter-submenu input'); 
 
-.btn-logout:hover {
-    transform: translateY(-1px); 
-    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.5); 
-}
+    // Grids e Cards
+    const productGrid = document.getElementById('product-grid');
+    const institutionGrid = document.getElementById('institution-grid');
+    const productCards = productGrid ? Array.from(productGrid.querySelectorAll('.product-card')) : [];
+    const institutionCards = institutionGrid ? Array.from(institutionGrid.querySelectorAll('.institution-card')) : [];
+    
+    // Elementos de Estatística
+    const statsTotal = document.getElementById('stats-total');
+    const statsDoacoes = document.getElementById('stats-doacoes');
+    const statsVendas = document.getElementById('stats-vendas');
+    const statsOngs = document.getElementById('stats-ongs');
+    const itemsFoundText = document.getElementById('items-found-text'); 
 
-/* =================================== */
-/* 12. Estilos da Página de Perfil
-/* =================================== */
+    // Estado Global
+    let state = {
+        nav: 'todos',
+        category: 'todos',
+        search: '',
+        locations: [],
+        priceRange: 'all',
+        conditions: []
+    };
 
-/* Container principal da página de perfil */
-.profile-container {
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  gap: 2rem; 
-  flex-grow: 1;
-  padding: 2rem 1rem;
-}
+    // --- Lógica de UI do Acordeão ---
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita comportamento padrão de botão form
+            const submenu = btn.nextElementSibling;
+            const isOpen = submenu.style.display === 'block';
+            submenu.style.display = isOpen ? 'none' : 'block';
+            btn.classList.toggle('active', !isOpen);
+        });
+    });
 
-/* Card base */
-.profile-card {
-  background-color: var(--color-white);
-  padding: 2.5rem;
-  border-radius: var(--border-radius-md);
-  border: var(--main-border);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  max-width: 700px; 
-}
+    // --- Helpers ---
 
-/* Card de Informações */
-.info-card {
-   text-align: center; 
-   max-width: 500px; 
-}
-.info-card h2 {
-  font-size: var(--font-size-xl);
-  color: var(--color-secondary);
-  margin-bottom: 0.5rem;
-}
-.info-card p {
-  color: var(--color-text-secondary);
-  margin-bottom: 2rem;
-}
-
-.profile-info { 
-    text-align: left;
-    margin-bottom: 2rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-sm);
-}
-.profile-info .info-item {
-    padding: 1rem;
-    border-bottom: 1px solid var(--color-border);
-}
-.profile-info .info-item:last-child {
-    border-bottom: none;
-}
-.profile-info .info-item strong {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-    margin-bottom: 0.25rem;
-}
-.profile-info .info-item span {
-    font-size: 1.1rem;
-    color: var(--color-text-primary);
-    word-break: break-all;
-}
-
-.btn-logout { 
-    padding: 0.8rem 1.5rem; 
-    border-radius: var(--border-radius-sm);
-    cursor: pointer;
-    font-weight: bold;
-    border: none;
-    transition: all 0.2s ease-in-out;
-    background-color: var(--color-danger);
-    color: var(--color-white);
-    font-size: var(--font-size-base);
-    display: inline-block; 
-    width: auto;
-}
-.btn-logout:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
-}
-
-
-/* --- Estilos para Seção de Atividades --- */
-.activity-card h2, .listings-card h2 {
-    font-size: var(--font-size-lg);
-    color: var(--color-secondary);
-    margin-bottom: 0.5rem;
-}
-.activity-card p, .listings-card p {
-    color: var(--color-text-secondary);
-    margin-bottom: 1.5rem;
-    font-size: var(--font-size-sm);
-}
-
-.activity-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-.activity-item {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 0.5rem 1rem; 
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-sm);
-    align-items: center;
-}
-.activity-type {
-    padding: 2px 8px;
-    border-radius: 10px;
-    color: var(--color-white);
-    font-weight: bold;
-    font-size: var(--font-size-xs);
-    flex-shrink: 0;
-}
-.activity-type.donation { background-color: var(--color-primary); }
-.activity-type.sale { background-color: var(--color-danger); }
-
-.activity-desc {
-    font-weight: 500;
-    color: var(--color-text-primary);
-    flex-grow: 1; 
-}
-.activity-recipient {
-    color: var(--color-text-light);
-}
-.activity-status {
-    font-style: italic;
-    color: var(--color-text-secondary);
-    margin-left: auto; 
-    flex-shrink: 0;
-}
-
-/* Placeholder para listas vazias */
-.placeholder-text {
-    text-align: center;
-    color: var(--color-text-muted);
-    font-style: italic;
-    margin-top: 1rem;
-    font-size: var(--font-size-sm) !important; 
-}
-
-
-/* --- Estilos para Seção de Anúncios --- */
-.listings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-    gap: 1rem;
-}
-
-.listing-item-card {
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-md);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-.listing-item-card img {
-    width: 100%;
-    height: 120px; 
-    object-fit: cover;
-}
-.listing-info {
-    padding: 0.75rem;
-}
-.listing-info h3 {
-    font-size: var(--font-size-sm);
-    margin: 0 0 0.3rem 0;
-}
-.listing-status {
-    font-size: var(--font-size-xs);
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: var(--border-radius-sm);
-    color: var(--color-white);
-}
-.listing-status.sale { background-color: var(--color-danger); }
-.listing-status.donation { background-color: var(--color-primary); }
-
-.listing-actions {
-    display: flex;
-    gap: 0.5rem;
-    padding: 0 0.75rem 0.75rem 0.75rem;
-    margin-top: auto; 
-}
-.listing-actions button {
-    flex-grow: 1;
-    padding: 0.4rem 0.8rem;
-    font-size: var(--font-size-xs);
-    border-radius: var(--border-radius-sm);
-    cursor: pointer;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-background);
-    color: var(--color-text-secondary);
-}
-.listing-actions button:hover {
-    background-color: var(--color-border);
-    color: var(--color-text-primary);
-}
-
-
-/* Ajustes responsivos */
-@media (min-width: 768px) {
-    .btn-logout {
-        flex-grow: 0; 
+    function parsePrice(priceText) {
+        if (!priceText) return 0;
+        if (priceText.toLowerCase().includes('grátis')) return 0;
+        // Remove "R$", espaços e converte vírgula para ponto
+        const clean = priceText.replace(/[^\d,]/g, '').replace(',', '.');
+        return parseFloat(clean) || 0;
     }
-}
-/* =================================== */
-/* Estilos do Pop-up Personalizado (Novo)
-/* =================================== */
 
-/* O fundo escuro que cobre a tela inteira */
-#custom-alert-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Preto com 50% de transparência */
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    z-index: 9999; /* Garante que fique por cima de tudo */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
+    function checkPrice(priceValue, range) {
+        if (range === 'all') return true;
+        if (range === 'free') return priceValue === 0;
+        if (range === 'up-to-100') return priceValue > 0 && priceValue <= 100;
+        if (range === '100-500') return priceValue > 100 && priceValue <= 500;
+        if (range === '500-plus') return priceValue > 500;
+        return true;
+    }
 
-/* Classe adicionada via JS para mostrar o popup com animação */
-#custom-alert-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
+    function checkCondition(fullText, selectedConditions) {
+        if (selectedConditions.length === 0) return true;
 
-/* A caixa branca do popup */
-#custom-alert-box {
-    background-color: var(--color-white, #fff);
-    padding: 2rem;
-    border-radius: 12px; /* Bordas bem arredondadas */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    transform: translateY(20px); /* Começa um pouco mais para baixo */
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito de "pulo" suave */
-}
+        return selectedConditions.some(cond => {
+            // Regex para evitar falsos positivos e lidar com gênero
+            if (cond === 'novo') {
+                // Encontra "novo" ou "nova", mas NÃO se tiver "semi" antes
+                return /\b(novo|nova|lacrado)\b/i.test(fullText) && !/seminovo|seminova/i.test(fullText);
+            }
+            if (cond === 'seminovo') {
+                return /seminovo|seminova/i.test(fullText);
+            }
+            if (cond === 'usado') {
+                return /usado|usada/i.test(fullText);
+            }
+            return fullText.includes(cond);
+        });
+    }
 
-/* Anima a caixa subindo quando o overlay aparece */
-#custom-alert-overlay.show #custom-alert-box {
-    transform: translateY(0);
-}
+    function updateStatistics(visibleProducts, visibleInstitutions) {
+        const total = visibleProducts.length + visibleInstitutions.length;
+        
+        if (statsTotal) statsTotal.textContent = total;
+        if (statsOngs) statsOngs.textContent = visibleInstitutions.length;
 
-/* O botão "Entendido" dentro do popup */
-#custom-alert-btn {
-    background-color: var(--color-primary, #3498db);
-    color: white;
-    border: none;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 30px; /* Botão estilo pílula */
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-}
+        let vendas = 0;
+        let doacoes = 0;
 
-#custom-alert-btn:hover {
-    background-color: #2980b9; /* Cor um pouco mais escura no hover */
-    transform: translateY(-2px);
-}
+        visibleProducts.forEach(c => {
+            const type = c.dataset.type;
+            if (type === 'venda') vendas++;
+            else if (type === 'doacao' || type === 'troca') doacoes++;
+        });
 
-#custom-alert-btn:active {
-    transform: translateY(0);
-}
+        if (statsVendas) statsVendas.textContent = vendas;
+        if (statsDoacoes) statsDoacoes.textContent = doacoes;
+    }
+
+    // --- Função Principal de Filtro ---
+
+    function filterItems() {
+        const { nav, category, search, locations, priceRange, conditions } = state;
+        const searchTerm = search.toLowerCase();
+
+        // Verifica se há filtros ativos que são exclusivos de PRODUTOS
+        const isProductFilterActive = (priceRange !== 'all') || (conditions.length > 0);
+
+        // Controle de Grids
+        // Se houver filtro de preço/condição ativo, ESCONDE as instituições forçadamente
+        let showInstitutionsGrid = (nav === 'instituicoes' || nav === 'todos') && !isProductFilterActive;
+        const showProductsGrid = (nav !== 'instituicoes');
+
+        // Aplica display aos containers
+        if (institutionGrid) institutionGrid.style.display = showInstitutionsGrid ? 'grid' : 'none';
+        if (productGrid) productGrid.style.display = showProductsGrid ? 'grid' : 'none';
+
+        const visibleInstitutions = [];
+        const visibleProducts = [];
+
+        // --- Filtrar Instituições ---
+        if (showInstitutionsGrid) {
+            institutionCards.forEach(card => {
+                const textContent = card.innerText.toLowerCase();
+                const cardLocation = card.querySelector('.location')?.textContent.toLowerCase() || '';
+                const cardCategory = card.dataset.category || 'todos';
+
+                const matchSearch = textContent.includes(searchTerm);
+                const matchCategory = (category === 'todos' || cardCategory === category);
+                const matchLocation = (locations.length === 0) || locations.some(loc => cardLocation.includes(loc));
+
+                const isVisible = matchSearch && matchCategory && matchLocation;
+                
+                card.style.display = isVisible ? 'flex' : 'none';
+                if (isVisible) visibleInstitutions.push(card);
+            });
+        } else {
+            // Garante que fiquem ocultos se o grid estiver hidden
+            institutionCards.forEach(c => c.style.display = 'none');
+        }
+
+        // --- Filtrar Produtos ---
+        if (showProductsGrid) {
+            productCards.forEach(card => {
+                const fullText = card.innerText.toLowerCase();
+                const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                const cardType = card.dataset.type;
+                const cardCategory = card.dataset.category;
+                const priceText = card.querySelector('.price')?.textContent || '';
+                const locationText = card.querySelector('.location')?.textContent.toLowerCase() || '';
+                
+                const priceValue = parsePrice(priceText);
+
+                // 1. Navegação
+                const matchNav = (nav === 'todos') || (nav === cardType);
+                // 2. Categoria
+                const matchCategory = (category === 'todos' || cardCategory === category);
+                // 3. Busca
+                const matchSearch = fullText.includes(searchTerm);
+                // 4. Localização
+                const matchLocation = (locations.length === 0) || locations.some(loc => locationText.includes(loc));
+                // 5. Preço
+                const matchPrice = checkPrice(priceValue, priceRange);
+                // 6. Condição (com Regex corrigido)
+                const matchCondition = checkCondition(fullText, conditions);
+
+                const isVisible = matchNav && matchCategory && matchSearch && matchLocation && matchPrice && matchCondition;
+
+                card.style.display = isVisible ? 'flex' : 'none';
+                if (isVisible) visibleProducts.push(card);
+            });
+        } else {
+            productCards.forEach(c => c.style.display = 'none');
+        }
+
+        // Atualiza contador de texto
+        const totalFound = visibleProducts.length + visibleInstitutions.length;
+        if (itemsFoundText) {
+            itemsFoundText.textContent = totalFound > 0 
+                ? `${totalFound} ${totalFound === 1 ? 'item encontrado' : 'itens encontrados'}`
+                : "Nenhum item encontrado com esses filtros";
+        }
+
+        updateStatistics(visibleProducts, visibleInstitutions);
+    }
+
+    // --- Event Listeners ---
+
+    // Navegação
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            navButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.nav = btn.dataset.filter;
+            filterItems();
+        });
+    });
+
+    // Categorias
+    categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            categoryButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.category = btn.dataset.filter;
+            filterItems();
+        });
+    });
+
+    // Busca
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            state.search = e.target.value;
+            filterItems();
+        });
+    }
+
+    // Inputs da Sidebar (Checkbox e Radio)
+    filterInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            if (input.name === 'loc') {
+                state.locations = Array.from(document.querySelectorAll('input[name="loc"]:checked')).map(el => el.value);
+            } else if (input.name === 'price') {
+                state.priceRange = document.querySelector('input[name="price"]:checked').value;
+            } else if (input.name === 'cond') {
+                state.conditions = Array.from(document.querySelectorAll('input[name="cond"]:checked')).map(el => el.value);
+            }
+            filterItems();
+        });
+    });
+
+    // Inicialização
+    filterItems();
+});
