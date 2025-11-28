@@ -69,7 +69,6 @@ Este projeto foi desenvolvido em três sprints principais, com entregas progress
 | **10/10/2025** | Implementação do `filter.js` com filtragem por categoria e tipo. |
 | **14/10/2025** | Adição do wizard de cadastro de ONGs (`register-ong.html` + `register-ong-wizard.js`). |
 | **18/10/2025** | Integração com API ViaCEP (`viacep-ong.js`). |
-| **21/10/2025** | Criação do fluxo de doação (`donate.html` + `donate-wizard.js`). |
 | **24/10/2025** | Revisão visual completa do layout principal (`index-style.css` reorganizado e otimizado). |
 | **26/10/2025** | Adição da interface de chat (`chat.html` + `chat-style.css`). |
 | **27/10/2025** | Correção de responsividade entre **960px e 1180px**. |
