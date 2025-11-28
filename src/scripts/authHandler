@@ -49,7 +49,6 @@ function parseJwtPayload(token) {
         }).join(''));
         return JSON.parse(jsonPayload);
     } catch (e) {
-        // CORREÇÃO DE BUG (Gravidade Baixa): Erro silencioso para não poluir o console
         return null;
     }
 }
@@ -63,13 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.addEventListener("submit", (e) => {
             e.preventDefault();
             
-            // Verifica qual tipo de conta está selecionado apenas para log interno (opcional)
-            // const tipoContaLogin = loginForm.querySelector('input[name="tipo_conta"]:checked').value;
-        
-            // Simulação: Salva um token genérico de usuário no localStorage.
+            
             localStorage.setItem("jwtToken", FAKE_JWT_TOKEN_USER); 
             
-            // Garante que dados de usuário existam para a simulação funcionar na página de Perfil.
             if (!localStorage.getItem('userData')) {
                 const fakeUserData = {
                     name: "Usuário (Login)",
@@ -79,10 +74,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem('userData', JSON.stringify(fakeUserData));
             }
 
-            window.location.href = "index.html"; // Redireciona para a página inicial.
+            window.location.href = "index.html"; .
         });
         
-        // Configura o botão de visibilidade da senha no formulário de login.
+  
         const loginSenhaInput = loginForm.querySelector("#senha");
         const loginToggleBtn = loginForm.querySelector("#toggleSenhaLogin");
         if (loginToggleBtn) {
@@ -113,16 +108,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const toggleConfirmarSenha = document.getElementById("toggleConfirmarSenha");
         const tipoContaRadios = registerForm.querySelectorAll('input[name="tipo_conta"]');
 
-        // Funções de validação pura.
+        // Funções de validação 
         const reMail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
         const vNome = val => val.trim().length >= 3;
         const vMail = val => reMail.test(val.trim());
         const vTermos = val => val === true;
         const vConfirmarSenha = (valSenha, valConfirmar) => valSenha === valConfirmar;
 
-        /**
-         * Calcula a pontuação de força da senha (0-100).
-         */
+        
         function scoreSenha(v) {
             let pontuacao = 0;
             if (v.length >= 8) pontuacao += 30;
@@ -133,9 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return Math.min(pontuacao, 100);
         }
 
-        /**
-         * Atualiza o estado visual de um campo e sua mensagem de hint.
-         */
+        
         function setEstado(campo, hintEl, valido, msgOK, msgERRO) {
             if (!hintEl) return;
             campo.classList.toggle("ok", valido);
@@ -144,26 +135,22 @@ document.addEventListener("DOMContentLoaded", () => {
             hintEl.textContent = valido ? msgOK : msgERRO;
         }
 
-        /**
-         * Atualiza a barra visual de força da senha.
-         */
+       
         function setBarra(pct) {
             if (!barraForca) return;
             barraForca.style.width = pct + "%";
-            barraForca.className = ""; // Limpa classes anteriores
+            barraForca.className = ""; 
             if (pct < 40) barraForca.classList.add("fraca");
             else if (pct < 80) barraForca.classList.add("media");
             else barraForca.classList.add("forte");
         }
 
-        /**
-         * Revalida todos os campos do formulário de cadastro de pessoa física.
-         */
+     
         function revalidarRegistro() {
             const nomeValido = vNome(nome.value);
             const emailValido = vMail(email.value);
             const pontuacaoSenha = scoreSenha(senha.value);
-            const senhaValida = pontuacaoSenha >= 40; // Requer pontuação mínima
+            const senhaValida = pontuacaoSenha >= 40; 
             
             // Só valida a confirmação se a senha principal já tiver algo digitado
             const confirmarSenhaValido = senha.value.length > 0 && vConfirmarSenha(senha.value, confirmarSenha.value);
@@ -222,7 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault(); 
             
             if (revalidarRegistro()) {
-                // CORREÇÃO: Removido console.log desnecessário para evitar poluição
                 
                 // Salva dados simulados no localStorage.
                 const userData = {
@@ -233,8 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem('userData', JSON.stringify(userData));
                 localStorage.setItem("jwtToken", FAKE_JWT_TOKEN_USER); // Salva token simulado.
                 
-                window.location.href = "index.html"; // Redireciona.
-                
+                window.location.href = "index.html";
                 // Limpa o formulário após o envio (simulado).
                 registerForm.reset();
                 setBarra(0);
