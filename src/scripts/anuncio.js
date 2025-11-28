@@ -8,7 +8,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. Lógica de Alternar Preço (Venda/Troca/Doação) ---
+    // ---Lógica de Alternar Preço (Venda/Troca/Doação) ---
     const tipoRadios = document.querySelectorAll('input[name="tipo_anuncio"]');
     const precoGroup = document.getElementById('precoGroup');
     const precoInput = document.getElementById('preco');
@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         togglePreco(); // Executa ao carregar para definir o estado inicial
     }
 
-    // --- 2. Máscara de CEP (Visual) ---
-    // Nota: viacep.js também pode manipular este campo para a busca na API
+    // --- Máscara de CEP (Visual) ---
     const cepInput = document.getElementById('cep');
     if (cepInput) {
         cepInput.addEventListener('input', (e) => {
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. Máscara de Preço (Moeda) ---
+    // --- Máscara de Preço (Moeda) ---
     if (precoInput) {
         precoInput.addEventListener('input', (e) => {
             let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
@@ -74,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 4. Botão "Negociável" ---
+    // --- Botão "Negociável" ---
     if (btnNegociar) {
         btnNegociar.addEventListener('click', () => {
             btnNegociar.classList.toggle('active'); 
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. Upload e Preview de Fotos ---
+    // --- Upload e Preview de Fotos ---
     const fotoDropzone = document.getElementById('fotoDropzone');
     const fotoInput = document.getElementById('fotos');
     const previewContainer = document.getElementById('fotoPreviewContainer');
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (fotoDropzone && fotoInput && previewContainer) {
         
-        // Clique na dropzone abre o seletor de arquivos
+        
         fotoDropzone.addEventListener('click', () => fotoInput.click());
 
         fotoInput.addEventListener('change', (event) => {
@@ -142,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateFotoCount(); 
     }
 
-    // --- 6. Submissão do Formulário (Simulação) ---
+    // --- Submissão do Formulário (Simulação) ---
     const anuncioForm = document.getElementById('anuncioForm');
     if (anuncioForm) {
         anuncioForm.addEventListener('submit', (e) => {
@@ -156,4 +155,5 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'index.html'; 
         });
     }
+
 });
