@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
          try { return JSON.parse(atob(token.split('.')[1])); } catch(e) { return null; }
     }
 
-    // --- NOVO: Função para criar e mostrar o popup personalizado ---
+    // --- Função para criar e mostrar o popup personalizado ---
     function showDevelopmentAlert() {
-        // 1. Remove popup anterior se houver (limpeza)
+        //  Remove popup anterior se houver (limpeza)
         const existingOverlay = document.getElementById('custom-alert-overlay');
         if (existingOverlay) existingOverlay.remove();
 
-        // 2. Cria os elementos HTML do popup dinamicamente
+        // Cria os elementos HTML do popup dinamicamente
         
         // O fundo escuro transparente
         const overlay = document.createElement('div');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => overlay.remove(), 300); // Remove do HTML após a animação
         };
 
-        // 3. Monta a estrutura e adiciona ao corpo da página
+        //  Monta a estrutura e adiciona ao corpo da página
         box.appendChild(iconContainer);
         box.appendChild(title);
         box.appendChild(message);
@@ -61,16 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.appendChild(box);
         document.body.appendChild(overlay);
 
-        // 4. Força um pequeno delay para ativar a animação CSS (classe 'show')
+        // Força um pequeno delay para ativar a animação CSS (classe 'show')
         setTimeout(() => overlay.classList.add('show'), 10);
     }
-    // --- FIM DA NOVA FUNÇÃO ---
+    
 
 
     const profilePageIdentifier = document.querySelector(".profile-card.info-card"); 
     if (profilePageIdentifier) {
         
-        // ... (Lógica de carregar dados do usuário e logout mantida) ...
+        
         const profileNameEl = document.getElementById("profile-name");
         const profileEmailEl = document.getElementById("profile-email");
         const logoutBtn = document.getElementById("logoutBtn");
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (profileNameEl) profileNameEl.textContent = userData.name || "Não informado";
             if (profileEmailEl) profileEmailEl.textContent = userData.email || "Não informado";
         } else {
-            // window.location.href = "login.html"; // Comentado para testes
+            
         }
 
         if (logoutBtn) {
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (action === 'editar') {
                     
-                    // --- AQUI ESTÁ A MUDANÇA PRINCIPAL ---
+                    
                     // Em vez de alert(), chamamos nossa nova função:
                     showDevelopmentAlert();
 
@@ -123,3 +123,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
