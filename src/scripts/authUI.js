@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatBtn = document.getElementById('chatBtn');
     const notifyBtn = document.getElementById('notifyBtn');
 
-    // --- 1. INJEÇÃO DE ESTILOS GLOBAIS (POP-UP) ---
+    // ---  INJEÇÃO DE ESTILOS GLOBAIS (POP-UP) ---
     // Adiciona o CSS do pop-up dinamicamente para funcionar em todas as páginas
     const style = document.createElement('style');
     style.innerHTML = `
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 
-    // --- 2. FUNÇÃO GLOBAL DE POP-UP ---
+    // --- FUNÇÃO GLOBAL DE POP-UP ---
     window.showDevelopmentAlert = function(titulo = 'Em Desenvolvimento', mensagem = 'Esta funcionalidade estará disponível em breve.') {
         const existingOverlay = document.getElementById('custom-alert-overlay');
         if (existingOverlay) existingOverlay.remove();
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => overlay.classList.add('show'), 10);
     };
 
-    // --- 3. LÓGICA GERAL DE BOTÕES ---
+    // ---LÓGICA GERAL DE BOTÕES ---
 
     // Aplica o pop-up aos botões de "Conversar" (classe .btn-chat)
     const chatButtons = document.querySelectorAll('.btn-chat');
@@ -145,3 +145,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
