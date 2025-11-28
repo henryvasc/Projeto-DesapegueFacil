@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ============================================================
-    // 4. LÓGICA DO WIZARD (Navegação)
+    // LÓGICA DO WIZARD (Navegação)
     // ============================================================
 
     function validateStep(stepIndex) {
@@ -387,4 +387,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializa
     showStep(currentStep);
 });
+
 
